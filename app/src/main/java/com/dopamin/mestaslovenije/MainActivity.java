@@ -9,12 +9,14 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 
-    Game game;
+    static Game game;
+    static boolean running = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Log.e("On create", "hh"+ savedInstanceState);
         // Set screen orientation to landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
@@ -28,6 +30,16 @@ public class MainActivity extends Activity {
             UI_OPTIONS = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
         }
         getWindow().getDecorView().setSystemUiVisibility(UI_OPTIONS);
+
+        if(game == null) {
+            Log.e("Starting a new instance", "hh");
+
+            game = new Game(this);
+            game.resume();
+            running = true;
+        }
+        if(savedInstanceState != null)
+            setContentView(game);
 
     }
 
@@ -38,15 +50,25 @@ public class MainActivity extends Activity {
             Initialize Game, start the game loop
             and set view
         */
-        game = new Game(this);
-        game.startGameLoop();
-        setContentView(game);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(running)
+            game.pause();
+        running = false;
     }
 
     // Reapply screen options when resuming activity
     @Override
     protected void onResume() {
         super.onResume();
+
+        if(!running)
+            game.resume();
+        running = true;
+
         // Set screen orientation to landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
@@ -60,5 +82,11 @@ public class MainActivity extends Activity {
             UI_OPTIONS = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
         }
         getWindow().getDecorView().setSystemUiVisibility(UI_OPTIONS);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        game.stop();
     }
 }

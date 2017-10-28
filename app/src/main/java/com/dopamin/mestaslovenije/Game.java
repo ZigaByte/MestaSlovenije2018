@@ -20,8 +20,9 @@ import com.dopamin.mestaslovenije.math.Vector2f;
 import com.dopamin.mestaslovenije.math.timing.Time;
 import com.dopamin.mestaslovenije.math.timing.Timer;
 
-public class Game extends View implements Time {
+public class Game extends View implements Time, Runnable {
 
+    int updateCount = 0;
 
     private Render render;
 
@@ -29,6 +30,8 @@ public class Game extends View implements Time {
 
     Input input;
     boolean running = false;
+
+    Thread updateThread = null;
 
     public void setMenu(Menu menu) {
         this.currentMenu = menu;
@@ -51,41 +54,61 @@ public class Game extends View implements Time {
 
     }
 
-    public void startGameLoop() {
-        running = true;
-        updateThread.start();
+    public synchronized void pause(){
+        running = false;
+        try {
+            updateThread.join();
+        }catch (Exception e){
+
+        }
     }
 
-    Thread updateThread = new Thread() {
-        @Override
-        public void run() {
-            super.run();
-            float timerStart = System.nanoTime() / 1000000000.0f;
-            while (running) {
-                float timerNow = System.nanoTime() / 1000000000.0f;
-                if (timerNow - timerStart >= 1 / 30.0) {
-                    update(timerNow - timerStart);
-                    timerStart = System.nanoTime() / 1000000000.0f;
-                    try{
-                        Thread.sleep(15);
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                    Thread.yield();
+    public void resume(){
+        updateThread = new Thread(this);
+        updateThread.start();
+        running = true;
+    }
+
+    public void stop(){
+        running = false;
+        try {
+            updateThread.join();
+        }catch (Exception e){
+
+        }
+    }
+
+    @Override
+    public void run() {
+        //super.run();
+        float timerStart = System.nanoTime() / 1000000000.0f;
+        while (running) {
+            float timerNow = System.nanoTime() / 1000000000.0f;
+            if (timerNow - timerStart >= 1 / 30.0) {
+                update(timerNow - timerStart);
+                timerStart = System.nanoTime() / 1000000000.0f;
+                try{
+                    Thread.sleep(15);
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
+                Thread.yield();
             }
         }
-    };
+    }
 
     public void update(float deltaTime) {
         // Update timers
+        Log.e("update count ", "" + updateCount++ + "\t "+ timers.size());
+        Log.e("timer ", "" );
         for (int i = 0; i < timers.size(); i++) {
             Timer t = timers.get(i);
             t.update(deltaTime);
-            if (t.finished) {
+        }
+        for (int i = 0; i < timers.size(); i++) {
+            Timer t = timers.get(i);
+            if(t.finished)
                 timers.remove(t);
-                i--;
-            }
         }
 
         currentMenu.update();

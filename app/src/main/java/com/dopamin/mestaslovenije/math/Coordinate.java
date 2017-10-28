@@ -27,7 +27,7 @@ public class Coordinate {
         double sY = (fixed2.n - fixed1.n) / (fixed2.IMAGE_Y - fixed1.IMAGE_Y);
 
         e = (fixed1.e + sX * (x - fixed1.IMAGE_X));
-        n = (fixed1.n + sY * (y - fixed1.IMAGE_Y));
+        n = (fixed1.n + sY * ((Render.HEIGHT - y) - fixed1.IMAGE_Y));
 
     }
 

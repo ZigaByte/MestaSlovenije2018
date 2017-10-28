@@ -32,7 +32,7 @@ public class Input implements View.OnTouchListener {
     @Override
     public boolean onTouch(View view, MotionEvent e) {
         int x = (int) (( e.getX() / Render.SCREEN_WIDTH) * Render.WIDTH);
-        int y = (int) (Render.HEIGHT - ((e.getY()) / Render.SCREEN_HEIGHT) * Render.HEIGHT);
+        int y = (int) (((e.getY()) / Render.SCREEN_HEIGHT) * Render.HEIGHT);
         inputs.add(new Vector2f(x, y));
         return false;
     }
