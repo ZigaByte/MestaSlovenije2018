@@ -21,7 +21,6 @@ public class LocationsLoader {
             InputStream is = am.open(fileName);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
-
             ArrayList<Location> locations = new ArrayList<Location>();
 
             String s;

@@ -1,5 +1,7 @@
 package com.dopamin.mestaslovenije.math.timing;
 
+import android.util.Log;
+
 public class TimerLimit extends Timer {
 
 	public Action action;
@@ -17,6 +19,7 @@ public class TimerLimit extends Timer {
 
 	@Override
 	public void update(float deltaTime) {
+		Log.e("Current time", time + " " + limit);
 		if (!finished)
 			super.update(deltaTime);
 

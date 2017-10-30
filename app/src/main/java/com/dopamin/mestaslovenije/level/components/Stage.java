@@ -1,5 +1,7 @@
 package com.dopamin.mestaslovenije.level.components;
 
+import android.util.Log;
+
 import com.dopamin.mestaslovenije.level.components.parts.Part;
 import com.dopamin.mestaslovenije.level.components.parts.PartAnswer;
 import com.dopamin.mestaslovenije.level.components.parts.PartQuestion;

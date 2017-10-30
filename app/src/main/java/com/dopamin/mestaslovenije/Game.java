@@ -1,14 +1,20 @@
 package com.dopamin.mestaslovenije;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
+import com.dopamin.mestaslovenije.input.DatabaseHelper;
+import com.dopamin.mestaslovenije.input.DatabaseSchema;
 import com.dopamin.mestaslovenije.input.Input;
 import com.dopamin.mestaslovenije.input.LocationsLoader;
 import com.dopamin.mestaslovenije.level.Entity;
@@ -20,6 +26,11 @@ import com.dopamin.mestaslovenije.math.Vector2f;
 import com.dopamin.mestaslovenije.math.timing.Time;
 import com.dopamin.mestaslovenije.math.timing.Timer;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.R.attr.start;
+
 public class Game extends View implements Time, Runnable {
 
     int updateCount = 0;
@@ -27,6 +38,9 @@ public class Game extends View implements Time, Runnable {
     private Render render;
 
     private Menu currentMenu;
+
+    DatabaseHelper databaseHelper;
+    SQLiteDatabase database;
 
     Input input;
     boolean running = false;
@@ -37,21 +51,41 @@ public class Game extends View implements Time, Runnable {
         this.currentMenu = menu;
     }
 
-
     public Game(Context context) {
         super(context);
 
+        // Load the locations and start database
+        LocationsLoader.am = context.getAssets();
+        startDatabase(context);
+
         Entity.setGame(this);
+
         input = new Input();
         setOnTouchListener(input);
 
         render = new Render(context);
-
         currentMenu = new MenuMain();
 
-        LocationsLoader.am = context.getAssets();
+        // Load the sprites
         SpriteLoader.loadSprites(context);
+    }
 
+    public void startDatabase(Context context){
+        // Start the database
+        databaseHelper = new DatabaseHelper(context);
+        database = databaseHelper.getWritableDatabase();
+/*
+        // Select all
+        Cursor cursor = database.query(DatabaseSchema.Location.TABLE_NAME, null, null, null, null, null, null, null);
+
+        // Display all the table entries
+        while(cursor.moveToNext()) {
+            Log.e("ENTRY !!", cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_NAME)) + " " + cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_N))
+                    + " " + cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_E))+ " " + cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_COUNT))
+                    + " " + cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_STAGE_ID)));
+        }
+        cursor.close();
+*/
     }
 
     public synchronized void pause(){
@@ -66,6 +100,7 @@ public class Game extends View implements Time, Runnable {
     public void resume(){
         updateThread = new Thread(this);
         updateThread.start();
+
         running = true;
     }
 
@@ -99,8 +134,6 @@ public class Game extends View implements Time, Runnable {
 
     public void update(float deltaTime) {
         // Update timers
-        Log.e("update count ", "" + updateCount++ + "\t "+ timers.size());
-        Log.e("timer ", "" );
         for (int i = 0; i < timers.size(); i++) {
             Timer t = timers.get(i);
             t.update(deltaTime);

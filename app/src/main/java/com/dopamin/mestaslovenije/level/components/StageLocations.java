@@ -1,5 +1,6 @@
 package com.dopamin.mestaslovenije.level.components;
 
+import com.dopamin.mestaslovenije.input.DatabaseLoader;
 import com.dopamin.mestaslovenije.input.LocationsLoader;
 
 import java.util.ArrayList;
@@ -7,19 +8,19 @@ import java.util.Random;
 
 public class StageLocations {
 
-	public static StageLocations testStage = new StageLocations("Test Stage", "coordinates.txt");
-	public static StageLocations mesta1 = new StageLocations("Vecja mesta ", "mesta1.txt");
-	public static StageLocations mesta2 = new StageLocations("Mesta", "mesta2.txt");
-	public static StageLocations mesta3 = new StageLocations("Manjsa mesta", "mesta3.txt");
-	public static StageLocations mesta4 = new StageLocations("Manjsa mesta drugic", "mesta4.txt");
+	public String name;
 
-	public final String name;
+	public ArrayList<Location> allLocations;
 
-	public final ArrayList<Location> allLocations;
+	private StageLocations(){}
 
-	public StageLocations(String name, String fileName) {
-		this.name = name;
-		allLocations = LocationsLoader.load(fileName);
+	public static StageLocations create(int id){
+		StageLocations newStageLocations = new StageLocations();
+
+		newStageLocations.allLocations = DatabaseLoader.loadStageLocations(id);
+		newStageLocations.name = DatabaseLoader.getStageName(id);
+
+		return newStageLocations;
 	}
 
 	public ArrayList<Question> generate(int questionsPerStage) {

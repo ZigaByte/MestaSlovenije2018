@@ -15,8 +15,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Log.e("On create", "hh"+ savedInstanceState);
         // Set screen orientation to landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
@@ -32,8 +30,6 @@ public class MainActivity extends Activity {
         getWindow().getDecorView().setSystemUiVisibility(UI_OPTIONS);
 
         if(game == null) {
-            Log.e("Starting a new instance", "hh");
-
             game = new Game(this);
             game.resume();
             running = true;
@@ -46,10 +42,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        /*
-            Initialize Game, start the game loop
-            and set view
-        */
     }
 
     @Override
