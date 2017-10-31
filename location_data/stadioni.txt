@@ -1,0 +1,20 @@
+1, Arena Stožice, 1, 46.081239, 14.5214482
+1, Dvorana Brinje, 1, 45.9628272, 14.6578968
+1, Dvorana Podmežakla, 1, 46.433123,14.0494433
+1, Dvorana Zlatorog, 1, 46.2475667, 15.2704777
+1, Gimnastièni center Ljubljana, 1, 46.0388265, 14.48354919
+1, Hala Tivoli, 1, 46.0601469, 14.4951383
+1, Ledena dvorana Bled, 1, 46.3686392, 14.110929
+1, Ledna dvorana, 1, 46.5497394, 15.63383279
+1, Rdeèa dvorana, 1, 46.3568961, 15.11517500
+1, UŠC Leona Štuklja, 1, 46.5622013, 15.6266960
+1, Stadion Bežigrad, 1, 46.0691849, 14.50859100
+1, Ljudski vrt, 1, 46.5626695, 15.6404582
+1, Stadion Matije Gubca, 1, 45.9488692, 15.487578
+1, Stadion Portoval, 1, 45.8024984, 15.15905380
+1, Stadion Stožice, 1, 46.0804912, 14.52421479
+1, Športni park Domžale, 1, 46.1368957, 14.6018042
+1, Športni park Kodeljevo, 1, 46.0505771, 14.5329441
+1, Stadion Portoval, 1, 45.8024984, 15.159053800
+1, Planica, 1, 46.4747685, 13.72284479
+1, Športna dvorana Poden, 1, 46.1698815, 14.30186090
