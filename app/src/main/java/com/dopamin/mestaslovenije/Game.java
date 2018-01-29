@@ -58,6 +58,9 @@ public class Game extends View implements Time, Runnable {
         LocationsLoader.am = context.getAssets();
         startDatabase(context);
 
+        // Load the sprites
+        SpriteLoader.loadSprites(context);
+
         Entity.setGame(this);
 
         input = new Input();
@@ -65,9 +68,6 @@ public class Game extends View implements Time, Runnable {
 
         render = new Render(context);
         currentMenu = new MenuMain();
-
-        // Load the sprites
-        SpriteLoader.loadSprites(context);
     }
 
     public void startDatabase(Context context){
@@ -167,6 +167,7 @@ public class Game extends View implements Time, Runnable {
         canvas.save();
 
         canvas.scale((float) Render.SCREEN_WIDTH / Render.WIDTH, (float) Render.SCREEN_HEIGHT / Render.HEIGHT);
+        render.drawRectangle("#637d69", 0, 0, 1600, 900);
 
         currentMenu.render(render);
         currentMenu.renderChildren(render);

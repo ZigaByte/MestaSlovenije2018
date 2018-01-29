@@ -8,7 +8,7 @@ import com.dopamin.mestaslovenije.math.Vector2f;
 
 public abstract class UIElement extends Entity {
 
-    public static final String green = "#7BC600";
+    public static final String green = "#589718";
 
     protected Vector2f pos;
     protected Vector2f size;
@@ -20,11 +20,13 @@ public abstract class UIElement extends Entity {
     public UIElement() {
         pos = new Vector2f();
         size = new Vector2f();
-        rectangle = new Rectangle(pos, pos.add(size));
 
-        loadTexture();
+        initTexture();
+        initLocation();
+
+        rectangle = new Rectangle(pos, pos.add(size));
     }
 
-    protected abstract void loadTexture();
-
+    protected abstract void initLocation();
+    protected abstract void initTexture();
 }

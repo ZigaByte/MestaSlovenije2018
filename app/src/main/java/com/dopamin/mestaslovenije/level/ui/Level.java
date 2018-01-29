@@ -20,11 +20,13 @@ public class Level extends UIElement {
     private int currentStageNumber = -1; // nextLevel gets called, so it starts with 0
 
     public Level() {
-        pos = new Vector2f(0, 0);
-        size = new Vector2f(Render.WIDTH, Render.HEIGHT);
-
         generateStages();
         nextStage();
+    }
+
+    public void initLocation(){
+        pos = new Vector2f(0, 0);
+        size = new Vector2f(Render.WIDTH, Render.HEIGHT);
     }
 
     private void generateStages() {
@@ -58,7 +60,7 @@ public class Level extends UIElement {
     }
 
     @Override
-    protected void loadTexture() {
+    protected void initTexture() {
         texture = SpriteLoader.background;
     }
 
@@ -68,7 +70,6 @@ public class Level extends UIElement {
 
     @Override
     public void render(Render r) {
-        r.drawTexture(texture, pos.x, pos.y, size.x, size.y);
     }
 
     /**

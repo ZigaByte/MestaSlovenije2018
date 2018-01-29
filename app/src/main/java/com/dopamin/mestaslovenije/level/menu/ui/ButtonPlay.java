@@ -1,8 +1,11 @@
 package com.dopamin.mestaslovenije.level.menu.ui;
 
 import android.graphics.Paint;
+import android.util.Log;
 
+import com.dopamin.mestaslovenije.graphics.Polygon;
 import com.dopamin.mestaslovenije.graphics.Render;
+import com.dopamin.mestaslovenije.graphics.SpriteLoader;
 import com.dopamin.mestaslovenije.level.menu.MenuLevel;
 import com.dopamin.mestaslovenije.math.Vector2f;
 
@@ -15,14 +18,17 @@ public class ButtonPlay extends Button {
 
 	@Override
 	protected void initLocation() {
-		pos = new Vector2f(50, 900 - 150);
-		size = new Vector2f(500, 100);
+		pos = new Vector2f(437, Render.HEIGHT -321);
+		size = new Vector2f(367, 281);
+	}
+
+	protected void initTexture(){
+		texture = SpriteLoader.buttonPlay;
 	}
 
 	@Override
 	public void render(Render r) {
 		super.render(r);
-		r.drawText("IGRAJ", "#000000", pos.x + size.x / 2, pos.y + size.y * 3 / 4, 64, Paint.Align.CENTER);
 
 	}
 

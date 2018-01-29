@@ -4,6 +4,8 @@ package com.dopamin.mestaslovenije.level.ui;
 import android.graphics.Paint;
 
 import com.dopamin.mestaslovenije.graphics.Render;
+import com.dopamin.mestaslovenije.graphics.Rhomboid;
+import com.dopamin.mestaslovenije.graphics.SpriteLoader;
 import com.dopamin.mestaslovenije.math.Vector2f;
 
 public class LabelScore extends Label {
@@ -12,6 +14,10 @@ public class LabelScore extends Label {
     protected void initLocation() {
         pos = new Vector2f(1000, 900 - 150);
         size = new Vector2f(500, 100);
+    }
+
+    protected void initTexture(){
+        texture = SpriteLoader.buttonPlay; // TODO fix
     }
 
     @Override

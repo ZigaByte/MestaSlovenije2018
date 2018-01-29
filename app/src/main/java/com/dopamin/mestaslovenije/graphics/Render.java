@@ -47,6 +47,8 @@ public class Render {
     public void begin(Canvas canvas, Paint paint) {
         this.canvas = canvas;
         this.paint = paint;
+
+        paint.setAntiAlias(true);
     }
 
     // Get alpha
@@ -85,6 +87,8 @@ public class Render {
      * @param rotation rotation of the polygon in radians
      */
     public void drawPolygon(Polygon p, String color, float x, float y, float rotation) {
+        if(p.VERTICES_COUNT <= 0) return;
+
         canvas.save();
         canvas.translate(x, y);
         canvas.rotate(rotation * 180 / 3.14f); // Convert to degrees
