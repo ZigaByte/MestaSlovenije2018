@@ -74,4 +74,8 @@ public class Level extends Entity{
         return score;
     }
 
+    public String getQuestion(){
+        return currentStage.getQuestion();
+    }
+
 }

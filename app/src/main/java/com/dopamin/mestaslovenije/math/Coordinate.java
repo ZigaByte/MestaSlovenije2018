@@ -8,8 +8,8 @@ public class Coordinate {
     static Coordinate fixed2;
 
     static {
-        fixed1 = new Coordinate(45.528319, 13.568289499999992, 178, 72);
-        fixed2 = new Coordinate(46.6560877, 16.0380562, 1249, 759);
+        fixed1 = new Coordinate(45.528319, 13.568289499999992, 292, 104);
+        fixed2 = new Coordinate(46.6560877, 16.0380562, 1243, 725);
     }
 
     public final int IMAGE_X;

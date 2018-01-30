@@ -90,4 +90,9 @@ public class Stage extends Component {
 		}
 		return score;
 	}
+
+	public String getQuestion(){
+		if(currentQuestion == 0)return "";
+		return questions.get(currentQuestion - 1).location.name;
+	}
 }

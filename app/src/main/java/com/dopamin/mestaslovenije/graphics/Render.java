@@ -8,7 +8,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.os.Build;
+import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 
@@ -21,6 +24,8 @@ public class Render {
 
     Canvas canvas;
     Paint paint;
+
+    private Typeface regular, bold;
 
     int alpha = 255;
 
@@ -41,6 +46,10 @@ public class Render {
             SCREEN_WIDTH = size.x;
             SCREEN_HEIGHT = size.y;
         }
+
+        regular = Typeface.createFromAsset(context.getAssets(), "fonts/typo_regular.otf");
+        //bold = Typeface.createFromAsset(context.getAssets(), "fonts/roboto_bold.ttf");
+        //regular = Typeface.create("Roboto", Typeface.NORMAL);
     }
 
     // Get fresh canvas and paint objects
@@ -49,6 +58,7 @@ public class Render {
         this.paint = paint;
 
         paint.setAntiAlias(true);
+        paint.setTypeface(regular);
     }
 
     // Get alpha
@@ -61,7 +71,30 @@ public class Render {
         alpha = a;
     }
 
+    public void drawText(String text, String color, float x, float y, int width, float rotation, int maxSize){
+        text = text.replace('.', ',');
+        if(text.length() <= 0)return;
+
+        Rect bounds = new Rect();
+        paint.setTextSize(10);
+        paint.getTextBounds(text, 0, text.length() - 1, bounds);
+
+        float newSize = paint.getTextSize() * width / bounds.right;
+        newSize = Math.min(newSize, maxSize);
+
+        canvas.save();
+        canvas.translate(x, y);
+        canvas.rotate(-rotation);
+
+        paint.setColor(Color.parseColor(color));
+        paint.setTextSize(newSize);
+        canvas.drawText(text, 0, 0, paint);
+
+        canvas.restore();
+    }
+
     public void drawText(String text, String color, float x, float y, int size, Paint.Align align) {
+        text = text.replace('.', ',');
         paint.setColor(Color.parseColor(color));
         paint.setAlpha(alpha);
         paint.setTextSize(size);
