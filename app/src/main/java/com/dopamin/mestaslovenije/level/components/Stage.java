@@ -1,13 +1,11 @@
 package com.dopamin.mestaslovenije.level.components;
 
-import android.util.Log;
-
 import com.dopamin.mestaslovenije.level.components.parts.Part;
 import com.dopamin.mestaslovenije.level.components.parts.PartAnswer;
 import com.dopamin.mestaslovenije.level.components.parts.PartQuestion;
 import com.dopamin.mestaslovenije.level.components.parts.PartResults;
 import com.dopamin.mestaslovenije.level.components.parts.PartStageName;
-import com.dopamin.mestaslovenije.level.ui.Level;
+import com.dopamin.mestaslovenije.level.Level;
 
 import java.util.ArrayList;
 

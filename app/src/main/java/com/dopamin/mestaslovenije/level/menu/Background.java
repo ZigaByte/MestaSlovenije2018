@@ -13,7 +13,7 @@ public class Background extends Label {
 
     @Override
     protected void initLocation() {
-        pos = new Vector2f(138, Render.HEIGHT - 847);
+        pos = new Vector2f(226, Render.HEIGHT - 847);
         size = new Vector2f(1240, 819);
     }
 

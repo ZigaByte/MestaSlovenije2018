@@ -2,8 +2,9 @@ package com.dopamin.mestaslovenije.level.menu;
 
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.level.Entity;
+import com.dopamin.mestaslovenije.level.ui.LabelQuestion;
 import com.dopamin.mestaslovenije.level.ui.LabelScore;
-import com.dopamin.mestaslovenije.level.ui.Level;
+import com.dopamin.mestaslovenije.level.Level;
 
 public class MenuLevel extends Menu {
 
@@ -13,6 +14,7 @@ public class MenuLevel extends Menu {
 
 		children.add(new Level());
 		children.add(new LabelScore());
+		children.add(new LabelQuestion());
 	}
 
 	@Override

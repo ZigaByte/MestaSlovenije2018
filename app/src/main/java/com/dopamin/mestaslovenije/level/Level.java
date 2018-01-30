@@ -1,9 +1,10 @@
-package com.dopamin.mestaslovenije.level.ui;
+package com.dopamin.mestaslovenije.level;
 
 import android.util.Log;
 
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
+import com.dopamin.mestaslovenije.level.Entity;
 import com.dopamin.mestaslovenije.level.components.Stage;
 import com.dopamin.mestaslovenije.level.components.StageLocations;
 import com.dopamin.mestaslovenije.level.menu.MenuResult;
@@ -11,7 +12,7 @@ import com.dopamin.mestaslovenije.math.Vector2f;
 
 import java.util.ArrayList;
 
-public class Level extends UIElement {
+public class Level extends Entity{
 
     // ArrayList of all generated stages of the game
     private ArrayList<Stage> stages = new ArrayList<Stage>();
@@ -22,11 +23,6 @@ public class Level extends UIElement {
     public Level() {
         generateStages();
         nextStage();
-    }
-
-    public void initLocation(){
-        pos = new Vector2f(0, 0);
-        size = new Vector2f(Render.WIDTH, Render.HEIGHT);
     }
 
     private void generateStages() {
@@ -57,11 +53,6 @@ public class Level extends UIElement {
     @Override
     public boolean processInput(Vector2f input) {
         return currentStage.processInput(input);
-    }
-
-    @Override
-    protected void initTexture() {
-        texture = SpriteLoader.background;
     }
 
     @Override

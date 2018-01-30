@@ -1,35 +1,24 @@
 package com.dopamin.mestaslovenije;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.View;
 
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
 import com.dopamin.mestaslovenije.input.DatabaseHelper;
-import com.dopamin.mestaslovenije.input.DatabaseSchema;
 import com.dopamin.mestaslovenije.input.Input;
 import com.dopamin.mestaslovenije.input.LocationsLoader;
 import com.dopamin.mestaslovenije.level.Entity;
 import com.dopamin.mestaslovenije.level.menu.Menu;
 import com.dopamin.mestaslovenije.level.menu.MenuLevel;
 import com.dopamin.mestaslovenije.level.menu.MenuMain;
-import com.dopamin.mestaslovenije.level.ui.Level;
+import com.dopamin.mestaslovenije.level.Level;
 import com.dopamin.mestaslovenije.math.Vector2f;
 import com.dopamin.mestaslovenije.math.timing.Time;
 import com.dopamin.mestaslovenije.math.timing.Timer;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static android.R.attr.start;
 
 public class Game extends View implements Time, Runnable {
 
