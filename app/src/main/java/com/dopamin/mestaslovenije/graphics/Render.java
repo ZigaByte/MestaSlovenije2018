@@ -13,6 +13,7 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.util.Log;
 import android.view.Display;
+import android.view.TextureView;
 import android.view.WindowManager;
 
 public class Render {
@@ -158,6 +159,7 @@ public class Render {
     }
 
     public void drawLine(String color, float x0, float y0, float x1, float y1) {
+        paint.setStrokeWidth(4);
         paint.setColor(Color.parseColor(color));
         canvas.drawLine(x0, y0, x1, y1, paint);
     }
@@ -176,6 +178,9 @@ public class Render {
         canvas.save();
         canvas.translate(x + w / 2, y + h / 2);
         canvas.rotate(rotation);
+        Log.e(texture.getWidth()+ " ", texture.getHeight() + " ");
+
+        canvas.scale(w/texture.getWidth(), h / texture.getHeight());
         canvas.drawBitmap(texture, -w / 2, -h / 2, paint);
 
         canvas.restore();

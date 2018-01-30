@@ -1,17 +1,27 @@
 package com.dopamin.mestaslovenije.level.components.parts;
 
+import android.graphics.Bitmap;
 import android.graphics.Paint;
 
 import com.dopamin.mestaslovenije.graphics.Render;
+import com.dopamin.mestaslovenije.graphics.SpriteLoader;
 import com.dopamin.mestaslovenije.level.components.Question;
 import com.dopamin.mestaslovenije.level.components.Stage;
 import com.dopamin.mestaslovenije.math.Coordinate;
 import com.dopamin.mestaslovenije.math.Vector2f;
 
+import static android.view.View.X;
+
 public class PartResults extends Part {
+
+    Bitmap textureCorrect;
+    Bitmap textureAnswer;
 
     public PartResults(Stage stage) {
         super(stage);
+
+        textureAnswer = SpriteLoader.gameAnswer;
+        textureCorrect = SpriteLoader.gameCorrect;
     }
 
     @Override
@@ -23,17 +33,28 @@ public class PartResults extends Part {
     @Override
     public void render(Render r) {
         r.drawText("Rezultati", "#000000", Render.WIDTH / 4, 100, 64, Paint.Align.CENTER);
-
-        // Draw all the lines between the results and such
+        // Draw all the lines
         for (int i = 0; i < stage.questionsPerStage; i++) {
             Question q = stage.getQuestion(i);
             Coordinate answer = q.answer;
             Coordinate correct = q.location.coordinate;
 
             r.drawLine("#000000", correct.IMAGE_X, correct.IMAGE_Y, answer.IMAGE_X, answer.IMAGE_Y);
-            r.drawCirlce("#00FF00", correct.IMAGE_X, correct.IMAGE_Y, 10);
-            r.drawCirlce("#FF0000", answer.IMAGE_X, answer.IMAGE_Y, 10);
-            r.drawText(q.location.name, "#000000", correct.IMAGE_X + 10, correct.IMAGE_Y + ((correct.IMAGE_Y - answer.IMAGE_Y < 0) ? -10 : 30), 32, Paint.Align.CENTER);
+        }
+        // Draw the points
+        for (int i = 0; i < stage.questionsPerStage; i++) {
+            Question q = stage.getQuestion(i);
+            Coordinate answer = q.answer;
+            Coordinate correct = q.location.coordinate;
+
+            int sizeX = 42, sizeY = 63;
+            if(answer.IMAGE_Y > correct.IMAGE_Y){
+                r.drawTexture(textureCorrect, correct.IMAGE_X - sizeX / 2, correct.IMAGE_Y - (sizeY * 9 / 10) , sizeX, sizeY);
+                r.drawTexture(textureAnswer, answer.IMAGE_X - sizeX / 2, answer.IMAGE_Y - (sizeY * 9 / 10) , sizeX, sizeY);
+            }else{
+                r.drawTexture(textureAnswer, answer.IMAGE_X - sizeX / 2, answer.IMAGE_Y - (sizeY * 9 / 10) , sizeX, sizeY);
+                r.drawTexture(textureCorrect, correct.IMAGE_X - sizeX / 2, correct.IMAGE_Y - (sizeY * 9 / 10) , sizeX, sizeY);
+            }
         }
     }
 
