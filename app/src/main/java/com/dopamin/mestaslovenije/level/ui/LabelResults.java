@@ -8,7 +8,7 @@ import com.dopamin.mestaslovenije.math.Vector2f;
  * Created by Žiga on 30. 01. 2018.
  */
 
-public class LabelQuestion extends Label{
+public class LabelResults extends Label{
 
     @Override
     protected void initLocation() {
@@ -23,6 +23,6 @@ public class LabelQuestion extends Label{
     @Override
     public void render(Render r) {
         super.render(r);
-        r.drawText(game.getLevel().getQuestion(), "#FFFFFF", 375, 165, 650, 1.8f, 90);
+        r.drawText("Rezultati", "#FFFFFF", 375, 165, 650, 1.8f, 90);
     }
 }

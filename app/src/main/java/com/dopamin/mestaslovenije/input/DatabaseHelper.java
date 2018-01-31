@@ -38,7 +38,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         loadStage(db, "mesta1.txt", 0, "Večja mesta");
         loadStage(db, "mesta2.txt", 1, "Srednja mesta");
         loadStage(db, "mesta3.txt", 2, "Manjša mesta");
-
+        loadStage(db, "mesta4.txt", 3, "Majhna mesta");
+        loadStage(db, "gore.txt", 4, "Gore");
+        loadStage(db, "elektrarne.txt", 5, "Elektrarne");
+        loadStage(db, "stadioni.txt", 6, "Stadioni");
+        loadStage(db, "zdravilisca.txt", 7, "Zdravilisca");
     }
 
     // Called from onCreate for every stage
@@ -52,6 +56,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         // Insert all the locations
         ArrayList<Location> locations = LocationsLoader.load(file);
         for(Location l : locations){
+            //Log.e("INserting into " + stageName, l.name);
             ContentValues values = new ContentValues();
             values.put(DatabaseSchema.Location.COLUMN_NAME, l.name);
             values.put(DatabaseSchema.Location.COLUMN_N, l.coordinate.n);

@@ -29,6 +29,12 @@ public class Level extends Entity{
         stages.add(new Stage(this, StageLocations.create(0), 0));
         stages.add(new Stage(this, StageLocations.create(1), 1));
         stages.add(new Stage(this, StageLocations.create(2), 2));
+        stages.add(new Stage(this, StageLocations.create(3), 3));
+        stages.add(new Stage(this, StageLocations.create(4), 4));
+        stages.add(new Stage(this, StageLocations.create(5), 5));
+        stages.add(new Stage(this, StageLocations.create(6), 6));
+        stages.add(new Stage(this, StageLocations.create(7), 7));
+
     }
 
     /**
@@ -43,6 +49,7 @@ public class Level extends Entity{
         // Check if we are over with the stages
         if (currentStageNumber < stages.size()) {
             children.add(currentStage = stages.get(currentStageNumber));
+            currentStage.begin();
         } else {
             // Finish up or something
             game.setMenu(new MenuResult());
@@ -77,5 +84,6 @@ public class Level extends Entity{
     public String getQuestion(){
         return currentStage.getQuestion();
     }
+    public String getStageName(){ return currentStage.name;}
 
 }

@@ -25,7 +25,7 @@ public class LabelScore extends Label {
         super.render(r);
 
         float score = game.getLevel().getScore();
-        r.drawText((String.format("%.2f", score) + " km").replace('.', ','), "#FFFFFF", 1320, 780, 300, -1, 60);
+        r.drawText((String.format("%.1f", score) + " km").replace('.', ','), "#FFFFFF", 1320, 780, 300, -1, 60);
     }
 
 }

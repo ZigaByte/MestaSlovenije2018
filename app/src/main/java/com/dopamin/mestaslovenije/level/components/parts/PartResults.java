@@ -7,6 +7,8 @@ import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
 import com.dopamin.mestaslovenije.level.components.Question;
 import com.dopamin.mestaslovenije.level.components.Stage;
+import com.dopamin.mestaslovenije.level.ui.LabelResults;
+import com.dopamin.mestaslovenije.level.ui.LabelScore;
 import com.dopamin.mestaslovenije.math.Coordinate;
 import com.dopamin.mestaslovenije.math.Vector2f;
 
@@ -22,6 +24,9 @@ public class PartResults extends Part {
 
         textureAnswer = SpriteLoader.gameAnswer;
         textureCorrect = SpriteLoader.gameCorrect;
+
+        children.add(new LabelScore());
+        children.add(new LabelResults());
     }
 
     @Override
@@ -32,7 +37,6 @@ public class PartResults extends Part {
 
     @Override
     public void render(Render r) {
-        r.drawText("Rezultati", "#000000", Render.WIDTH / 4, 100, 64, Paint.Align.CENTER);
         // Draw all the lines
         for (int i = 0; i < stage.questionsPerStage; i++) {
             Question q = stage.getQuestion(i);
@@ -42,20 +46,26 @@ public class PartResults extends Part {
             r.drawLine("#000000", correct.IMAGE_X, correct.IMAGE_Y, answer.IMAGE_X, answer.IMAGE_Y);
         }
         // Draw the points
+        int sizeX = 42, sizeY = 63;
         for (int i = 0; i < stage.questionsPerStage; i++) {
             Question q = stage.getQuestion(i);
             Coordinate answer = q.answer;
             Coordinate correct = q.location.coordinate;
-
-            int sizeX = 42, sizeY = 63;
-            if(answer.IMAGE_Y > correct.IMAGE_Y){
-                r.drawTexture(textureCorrect, correct.IMAGE_X - sizeX / 2, correct.IMAGE_Y - (sizeY * 9 / 10) , sizeX, sizeY);
-                r.drawTexture(textureAnswer, answer.IMAGE_X - sizeX / 2, answer.IMAGE_Y - (sizeY * 9 / 10) , sizeX, sizeY);
-            }else{
-                r.drawTexture(textureAnswer, answer.IMAGE_X - sizeX / 2, answer.IMAGE_Y - (sizeY * 9 / 10) , sizeX, sizeY);
-                r.drawTexture(textureCorrect, correct.IMAGE_X - sizeX / 2, correct.IMAGE_Y - (sizeY * 9 / 10) , sizeX, sizeY);
+            if (answer.IMAGE_Y > correct.IMAGE_Y) {
+                r.drawTexture(textureCorrect, correct.IMAGE_X - sizeX / 2, correct.IMAGE_Y - (sizeY * 9 / 10), sizeX, sizeY);
+                r.drawTexture(textureAnswer, answer.IMAGE_X - sizeX / 2, answer.IMAGE_Y - (sizeY * 9 / 10), sizeX, sizeY);
+            } else {
+                r.drawTexture(textureAnswer, answer.IMAGE_X - sizeX / 2, answer.IMAGE_Y - (sizeY * 9 / 10), sizeX, sizeY);
+                r.drawTexture(textureCorrect, correct.IMAGE_X - sizeX / 2, correct.IMAGE_Y - (sizeY * 9 / 10), sizeX, sizeY);
             }
+
+        }
+        // Draw the distances
+        for (int i = 0; i < stage.questionsPerStage; i++) {
+            Question q = stage.getQuestion(i);
+            Coordinate answer = q.answer;
+            Coordinate correct = q.location.coordinate;
+            r.drawText((String.format("%.1f", q.score) + " km").replace('.', ','), "#FFFFFF", correct.IMAGE_X, correct.IMAGE_Y - sizeY, 5000, -1, 30);
         }
     }
-
 }

@@ -1,0 +1,21 @@
+﻿1, Izvir Bohinjske Bistrice, 1, 46.2559994, 13.9199646
+1, Izvir Soče, 1, 46.4118443, 13.7238235
+1, Slap Savica, 1, 46.2927863,13.7964506
+1, Tolminska korita, 1, 46.3274735,14.5900744
+1, Zelenci, 1, 46.4925096,13.7373753
+1, Izvir Tolminke, 1, 46.2581252,13.7269591
+1, Izvir Krope, 1, 46.2850154,14.1935436
+1, Izvir Krke, 1, 45.8897355,14.7713117
+1, Izvir Savinje, 1, 46.3709059,14.5927327
+1, Močilnik - Izvir Ljubljanice, 1, 45.9553466,14.2924548
+1, Nuskova - Slatinski vrelec, 1, 46.8104932,16.0252373
+1, Retovje - Izvir Ljubljanice, 1, 45.9510611,14.2958298
+1, Gozdni vrelec, 1, 46.2375981,15.6411359
+1, Ivanov vrelec, 1, 46.2387807,15.6356502
+1, Kraljevi vrelec, 1, 46.2486696,15.5778525
+1, Slap Nadiža, 1, 46.448614, 13.709167
+1, Slap Rinka, 1, 46.3709059,14.5927327
+1, Slap Boka, 1, 46.3214172,13.4813943
+1, Martuljkov slap, 1, 46.4658735,13.8331787
+1, Čedrca, 1, 46.371944, 14.525
+1, Slap Peričnik, 1, 46.4392033,13.8935995

@@ -11,6 +11,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import static android.R.attr.id;
+
 public class LocationsLoader {
 
     public static AssetManager am = null;
@@ -27,14 +29,14 @@ public class LocationsLoader {
             while ((s = br.readLine()) != null) {
                 String[] parts = s.split(",");
 
-                int id = Integer.parseInt(parts[0].trim());
+                //int id = Integer.parseInt(parts[0].trim());
                 String name = parts[1].trim();
                 int population = Integer.parseInt(parts[2].trim());
                 float n = Float.parseFloat(parts[3].trim());
                 float e = Float.parseFloat(parts[4].trim());
                 Coordinate coordinate = new Coordinate(n, e);
 
-                locations.add(new Location(id, name, coordinate));
+                locations.add(new Location(0, name, coordinate));
             }
 
             return locations;

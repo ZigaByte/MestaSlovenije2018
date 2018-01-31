@@ -29,8 +29,6 @@ public class Stage extends Component {
 
 		// Get random questions
 		questions = sl.generate(questionsPerStage);
-
-		begin();
 	}
 
 	public void begin() {

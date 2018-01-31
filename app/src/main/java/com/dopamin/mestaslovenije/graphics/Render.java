@@ -60,6 +60,7 @@ public class Render {
 
         paint.setAntiAlias(true);
         paint.setTypeface(regular);
+        paint.setTextAlign(Paint.Align.CENTER);
     }
 
     // Get alpha
@@ -169,16 +170,11 @@ public class Render {
     }
 
     public void drawTexture(Bitmap texture, float x, float y, float w, float h, float rotation) {
-
-        //TODO: Remove Bitmap scaling every time it gets drawn!!!
-        //Bitmap scaled = Bitmap.createScaledBitmap(texture, (int) w, (int) h, true);
-
-        // The draw method requires rotation in degrees.
+       // The draw method requires rotation in degrees.
         rotation = rotation * 180f / 3.14f;
         canvas.save();
         canvas.translate(x + w / 2, y + h / 2);
         canvas.rotate(rotation);
-        Log.e(texture.getWidth()+ " ", texture.getHeight() + " ");
 
         canvas.scale(w/texture.getWidth(), h / texture.getHeight());
         canvas.drawBitmap(texture, -w / 2, -h / 2, paint);

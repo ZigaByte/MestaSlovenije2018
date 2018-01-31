@@ -13,8 +13,7 @@ public class MenuLevel extends Menu {
 		children.add(new Background());
 
 		children.add(new Level());
-		children.add(new LabelScore());
-		children.add(new LabelQuestion());
+
 	}
 
 	@Override

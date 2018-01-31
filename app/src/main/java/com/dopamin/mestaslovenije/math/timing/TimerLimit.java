@@ -19,7 +19,7 @@ public class TimerLimit extends Timer {
 
 	@Override
 	public void update(float deltaTime) {
-		Log.e("Current time", time + " " + limit);
+		//Log.e("Current time", time + " " + limit);
 		if (!finished)
 			super.update(deltaTime);
 
