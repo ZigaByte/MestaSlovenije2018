@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Stage extends Component {
 
 	private Level level;
-	private final int stageNumber;
+	public final int stageNumber;
 
 	public final int questionsPerStage = 3;
 	public final String name;

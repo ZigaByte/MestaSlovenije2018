@@ -7,6 +7,7 @@ import android.util.Log;
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.level.components.Question;
 import com.dopamin.mestaslovenije.level.components.Stage;
+import com.dopamin.mestaslovenije.level.ui.LabelGoalGame;
 import com.dopamin.mestaslovenije.level.ui.LabelQuestion;
 import com.dopamin.mestaslovenije.level.ui.LabelScore;
 import com.dopamin.mestaslovenije.math.Coordinate;
@@ -26,6 +27,7 @@ public class PartQuestion extends Part {
 
         children.add(new LabelScore());
         children.add(new LabelQuestion());
+        children.add(new LabelGoalGame(stage.stageNumber));
     }
 
     @Override

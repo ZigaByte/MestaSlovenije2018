@@ -10,6 +10,12 @@ import com.dopamin.mestaslovenije.math.Vector2f;
 
 public class LabelStageName extends Label{
 
+    private String stageName;
+
+    public LabelStageName(String stageName){
+        this.stageName = stageName;
+    }
+
     @Override
     protected void initLocation() {
         pos = new Vector2f(-60 + 300, 44 + 300);
@@ -23,6 +29,6 @@ public class LabelStageName extends Label{
     @Override
     public void render(Render r) {
         super.render(r);
-        r.drawText(game.getLevel().getStageName(), "#FFFFFF", 375 + 300, 165 + 300, 650, 1.8f, 90);
+        r.drawText(stageName, "#FFFFFF", 375 + 300, 165 + 300, 650, 1.8f, 90);
     }
 }

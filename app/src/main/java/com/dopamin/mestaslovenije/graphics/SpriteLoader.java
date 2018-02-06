@@ -21,7 +21,9 @@ public class SpriteLoader {
     public static Bitmap gameQuestion;
     public static Bitmap gameAnswer;
     public static Bitmap gameCorrect;
+    public static Bitmap gameGoal;
 
+    public static Bitmap labelGoal;
 
 
     public static void loadSprites(Context context) {
@@ -36,5 +38,9 @@ public class SpriteLoader {
         gameQuestion = BitmapFactory.decodeResource(context.getResources(), R.drawable.game_question);
         gameAnswer = BitmapFactory.decodeResource(context.getResources(), R.drawable.game_false);
         gameCorrect = BitmapFactory.decodeResource(context.getResources(), R.drawable.game_true);
+        gameGoal = BitmapFactory.decodeResource(context.getResources(), R.drawable.game_goal);
+
+        labelGoal = BitmapFactory.decodeResource(context.getResources(), R.drawable.label_goal);
+
     }
 }

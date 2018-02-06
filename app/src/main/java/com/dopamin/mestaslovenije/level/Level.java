@@ -84,6 +84,4 @@ public class Level extends Entity{
     public String getQuestion(){
         return currentStage.getQuestion();
     }
-    public String getStageName(){ return currentStage.name;}
-
 }
