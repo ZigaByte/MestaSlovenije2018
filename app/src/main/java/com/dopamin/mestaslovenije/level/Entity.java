@@ -41,9 +41,15 @@ public abstract class Entity implements Time {
                 children.get(i).renderChildren(r);
             }
         }
+
+        renderPostChildren(r);
     }
 
     public abstract void render(Render r);
+
+    public void renderPostChildren(Render r){
+
+    }
 
     public boolean processInput(Vector2f input) {
         for (Entity e : children) {

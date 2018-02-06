@@ -24,8 +24,8 @@ public class PartAnswer extends Part {
 		textureAnswer = SpriteLoader.gameAnswer;
 		textureCorrect = SpriteLoader.gameCorrect;
 
-		children.add(new LabelScore());
-		children.add(new LabelQuestion());
+		children.add(new LabelScore(stage.getLevel().getScore()));
+		children.add(new LabelQuestion(partQuestion.getQuestion().location.name));
 	}
 
 	@Override

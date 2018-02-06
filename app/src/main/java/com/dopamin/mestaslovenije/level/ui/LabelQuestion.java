@@ -10,6 +10,12 @@ import com.dopamin.mestaslovenije.math.Vector2f;
 
 public class LabelQuestion extends Label{
 
+    private String question;
+
+    public LabelQuestion(String question){
+        this.question = question;
+    }
+
     @Override
     protected void initLocation() {
         pos = new Vector2f(-60, 900 - 856);
@@ -23,6 +29,6 @@ public class LabelQuestion extends Label{
     @Override
     public void render(Render r) {
         super.render(r);
-        r.drawText(game.getLevel().getQuestion(), "#FFFFFF", 375, 165, 650, 1.8f, 90);
+        r.drawText(question, "#FFFFFF", 375, 165, 650, 1.8f, 90);
     }
 }

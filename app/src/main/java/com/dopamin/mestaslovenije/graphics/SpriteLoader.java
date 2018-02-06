@@ -25,6 +25,8 @@ public class SpriteLoader {
 
     public static Bitmap labelGoal;
 
+    public static Bitmap tutorialArrowQuestion;
+    public static Bitmap tutorialArrowScore;
 
     public static void loadSprites(Context context) {
         background = BitmapFactory.decodeResource(context.getResources(), R.drawable.slovenia);
@@ -41,6 +43,9 @@ public class SpriteLoader {
         gameGoal = BitmapFactory.decodeResource(context.getResources(), R.drawable.game_goal);
 
         labelGoal = BitmapFactory.decodeResource(context.getResources(), R.drawable.label_goal);
+
+        tutorialArrowQuestion = BitmapFactory.decodeResource(context.getResources(), R.drawable.tutorial_arrow_question);
+        tutorialArrowScore = BitmapFactory.decodeResource(context.getResources(), R.drawable.tutorial_arrow_score);
 
     }
 }

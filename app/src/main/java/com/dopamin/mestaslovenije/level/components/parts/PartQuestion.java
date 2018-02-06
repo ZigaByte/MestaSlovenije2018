@@ -25,8 +25,8 @@ public class PartQuestion extends Part {
         this.question = question;
         this.questionNumber = questionNumber;
 
-        children.add(new LabelScore());
-        children.add(new LabelQuestion());
+        children.add(new LabelScore(stage.getLevel().getScore()));
+        children.add(new LabelQuestion(question.location.name));
         children.add(new LabelGoalGame(stage.stageNumber));
     }
 

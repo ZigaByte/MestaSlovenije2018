@@ -25,7 +25,7 @@ public class PartResults extends Part {
         textureAnswer = SpriteLoader.gameAnswer;
         textureCorrect = SpriteLoader.gameCorrect;
 
-        children.add(new LabelScore());
+        children.add(new LabelScore(stage.getLevel().getScore()));
         children.add(new LabelResults());
     }
 

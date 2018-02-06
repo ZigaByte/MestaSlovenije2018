@@ -93,4 +93,8 @@ public class Stage extends Component {
 		if(currentQuestion == 0)return "";
 		return questions.get(currentQuestion - 1).location.name;
 	}
+
+	public Level getLevel(){
+		return level;
+	}
 }

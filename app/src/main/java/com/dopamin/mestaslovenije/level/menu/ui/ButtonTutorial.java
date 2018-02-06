@@ -3,13 +3,14 @@ package com.dopamin.mestaslovenije.level.menu.ui;
 
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
+import com.dopamin.mestaslovenije.level.menu.MenuTutorialFirst;
 import com.dopamin.mestaslovenije.math.Vector2f;
 
 public class ButtonTutorial extends Button {
 
 	@Override
 	protected void pressed() {
-
+		game.setMenu(new MenuTutorialFirst());
 	}
 
 	@Override
