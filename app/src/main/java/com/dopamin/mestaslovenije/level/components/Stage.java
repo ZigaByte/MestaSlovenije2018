@@ -22,6 +22,8 @@ public class Stage extends Component {
 	private Part currentPart;
 	private int currentQuestion = 0;
 
+	public boolean completed = false;
+
 	public Stage(Level level, StageLocations sl, int index) {
 		this.level = level;
 		this.name = sl.name;
@@ -59,19 +61,28 @@ public class Stage extends Component {
 			currentPart.setActive(true);
 			currentQuestion++;
 		} else {
+			evaluateResults();
+
 			displayResults();
 		}
 	}
 
+	private void evaluateResults(){
+		completed = level.getScore() <= (stageNumber + 1) * 75;
+	}
+
 	private void displayResults() {
-		currentPart = new PartResults(this);
+		currentPart = new PartResults(this, completed);
 		currentPart.setActive(true);
 		children.add(currentPart);
 	}
 
 	// This method ends the current stage and tells level to go to next stage
 	public void complete() {
-		level.nextStage();
+		if(completed)
+			level.nextStage();
+		else
+			level.endLevel(false); // Stage not completed - end level.
 	}
 
 	public Question getQuestion(int index) {

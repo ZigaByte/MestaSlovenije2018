@@ -10,6 +10,12 @@ import com.dopamin.mestaslovenije.math.Vector2f;
 
 public class LabelResults extends Label{
 
+    private boolean passed;
+
+    public LabelResults(boolean passed){
+        this.passed = passed;
+    }
+
     @Override
     protected void initLocation() {
         pos = new Vector2f(-60, 900 - 856);
@@ -23,6 +29,7 @@ public class LabelResults extends Label{
     @Override
     public void render(Render r) {
         super.render(r);
-        r.drawText("Rezultati", "#FFFFFF", 375, 165, 650, 1.8f, 90);
+        String text = passed ? "Stopnja opravljena" : "Cilj prekoračen!";
+        r.drawText(text, "#FFFFFF", 375, 165, 650, 1.8f, 90);
     }
 }

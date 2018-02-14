@@ -52,9 +52,12 @@ public class Level extends Entity{
             currentStage.begin();
         } else {
             // Finish up or something
-            game.setMenu(new MenuResult());
-
+            endLevel(true);
         }
+    }
+
+    public void endLevel(boolean completedAllStages){
+        game.setMenu(new MenuResult());
     }
 
     @Override

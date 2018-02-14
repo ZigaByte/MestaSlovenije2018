@@ -7,6 +7,7 @@ import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
 import com.dopamin.mestaslovenije.level.components.Question;
 import com.dopamin.mestaslovenije.level.components.Stage;
+import com.dopamin.mestaslovenije.level.ui.LabelGoalGame;
 import com.dopamin.mestaslovenije.level.ui.LabelResults;
 import com.dopamin.mestaslovenije.level.ui.LabelScore;
 import com.dopamin.mestaslovenije.math.Coordinate;
@@ -19,14 +20,15 @@ public class PartResults extends Part {
     Bitmap textureCorrect;
     Bitmap textureAnswer;
 
-    public PartResults(Stage stage) {
+    public PartResults(Stage stage, boolean passed) {
         super(stage);
 
         textureAnswer = SpriteLoader.gameAnswer;
         textureCorrect = SpriteLoader.gameCorrect;
 
         children.add(new LabelScore(stage.getLevel().getScore()));
-        children.add(new LabelResults());
+        children.add(new LabelResults(passed));
+        children.add(new LabelGoalGame(stage.stageNumber));
     }
 
     @Override
