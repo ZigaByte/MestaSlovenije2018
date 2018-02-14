@@ -5,8 +5,11 @@ import android.util.Log;
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
 import com.dopamin.mestaslovenije.level.Entity;
+import com.dopamin.mestaslovenije.level.components.Question;
 import com.dopamin.mestaslovenije.level.components.Stage;
 import com.dopamin.mestaslovenije.level.components.StageLocations;
+import com.dopamin.mestaslovenije.level.menu.MenuGameOver;
+import com.dopamin.mestaslovenije.level.menu.MenuGameWon;
 import com.dopamin.mestaslovenije.level.menu.MenuResult;
 import com.dopamin.mestaslovenije.math.Vector2f;
 
@@ -57,7 +60,10 @@ public class Level extends Entity{
     }
 
     public void endLevel(boolean completedAllStages){
-        game.setMenu(new MenuResult());
+        if(completedAllStages)
+            game.setMenu(new MenuGameWon(getAllQuestions()));
+        else
+            game.setMenu(new MenuGameOver(getAllQuestions()));
     }
 
     @Override
@@ -82,6 +88,17 @@ public class Level extends Entity{
             score += s.getScore();
         }
         return score;
+    }
+
+    private ArrayList<Question> getAllQuestions(){
+        ArrayList<Question> questions = new ArrayList<Question>();
+        for(int i = 0; i <= currentStageNumber; i++){
+            Stage s = stages.get(i);
+            for(int j = 0; j < s.questionsPerStage; j++){
+                questions.add(s.getQuestion(j));
+            }
+        }
+        return questions;
     }
 
 }
