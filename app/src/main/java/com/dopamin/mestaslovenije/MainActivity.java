@@ -36,6 +36,8 @@ public class MainActivity extends Activity {
         // Set screen orientation to landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        Log.e("ON CREATE", "on create called");
+
         /*
             Hide navigation bar and enable
             fullscreen and immersive mode
@@ -49,13 +51,15 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        servicesController = new ServicesController(this);
-        game = findViewById(R.id.game);
-        game.init(this, servicesController);
+        if(savedInstanceState != null){
+            servicesController = new ServicesController(this);
+            game = findViewById(R.id.game);
+            game.init(this, servicesController);
 
-        running = true;
+            running = true;
 
-        servicesController.startSignInIntent();
+            servicesController.startSignInIntent();
+        }
     }
 
 

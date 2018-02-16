@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -33,10 +34,12 @@ public class ServicesController {
 
 
     public boolean isSignedIn() {
+        Log.e("SERVICES CONTROLLER", "Signed in check: signed in = " + (GoogleSignIn.getLastSignedInAccount(context) != null));
         return GoogleSignIn.getLastSignedInAccount(context) != null;
     }
 
     public void showLeaderboard() {
+        Log.e("SERVICES CONTROLLER", "Showing leaderboard");
         Games.getLeaderboardsClient(context, GoogleSignIn.getLastSignedInAccount((MainActivity)context))
                 .getLeaderboardIntent(context.getString(R.string.leaderboard))
                 .addOnSuccessListener(new OnSuccessListener<Intent>() {
@@ -48,10 +51,12 @@ public class ServicesController {
     }
 
     public void submitScore(long score){
+        Log.e("SERVICES CONTROLLER", "Submitting score: " + score);
         Games.getLeaderboardsClient(context, GoogleSignIn.getLastSignedInAccount((MainActivity)context)).submitScore(context.getString(R.string.leaderboard), score);
     }
 
     public void signInSilently() {
+        Log.e("SERVICES CONTROLLER", "Signing in silently");
         GoogleSignInClient signInClient = GoogleSignIn.getClient(context, GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN);
         signInClient.silentSignIn().addOnCompleteListener((MainActivity) context,
                 new OnCompleteListener<GoogleSignInAccount>() {
@@ -68,12 +73,14 @@ public class ServicesController {
     };
 
     public void startSignInIntent() {
+        Log.e("SERVICES CONTROLLER", "Starting Sign in intent");
         GoogleSignInClient signInClient = GoogleSignIn.getClient(context, GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN);
         Intent intent = signInClient.getSignInIntent();
         ((Activity)context).startActivityForResult(intent, SERVICES_REQUEST_ID);
     }
 
     public void onActivityResult(Intent data) {
+        Log.e("SERVICES CONTROLLER", "Receiving sign in result");
         GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
         if (result.isSuccess()) {
             // The signed in account is stored in the result.

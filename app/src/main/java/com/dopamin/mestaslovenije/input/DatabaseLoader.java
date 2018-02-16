@@ -46,7 +46,7 @@ public class DatabaseLoader {
         ArrayList<Location> toReturn = new ArrayList<Location>();
 
         Log.e("ENTRY loading now !!", ""  + stageId);
-        while(cursor.moveToNext()) {
+        do{
             Log.e("ENTRY !!", cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_NAME)) + " " + cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_N))
                     + " " + cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_E)));
 
@@ -57,7 +57,7 @@ public class DatabaseLoader {
             String name = cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_NAME));
 
             toReturn.add(new Location(id, name, c));
-        }
+        }while(cursor.moveToNext());
 
         return toReturn;
     }
