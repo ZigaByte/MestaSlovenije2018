@@ -2,6 +2,7 @@ package com.dopamin.mestaslovenije.level;
 
 import android.util.Log;
 
+import com.dopamin.mestaslovenije.MainActivity;
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
 import com.dopamin.mestaslovenije.level.Entity;
@@ -60,8 +61,10 @@ public class Level extends Entity{
     }
 
     public void endLevel(boolean completedAllStages){
-        if(completedAllStages)
+        if(completedAllStages){
             game.setMenu(new MenuGameWon(getAllQuestions()));
+            MainActivity.getGame().services.submitScore((long)getScore());
+        }
         else
             game.setMenu(new MenuGameOver(getAllQuestions()));
     }
@@ -92,7 +95,7 @@ public class Level extends Entity{
 
     private ArrayList<Question> getAllQuestions(){
         ArrayList<Question> questions = new ArrayList<Question>();
-        for(int i = 0; i <= currentStageNumber; i++){
+        for(int i = 0; i < currentStageNumber; i++){
             Stage s = stages.get(i);
             for(int j = 0; j < s.questionsPerStage; j++){
                 questions.add(s.getQuestion(j));

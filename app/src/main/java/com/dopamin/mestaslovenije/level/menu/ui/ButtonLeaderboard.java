@@ -1,5 +1,6 @@
 package com.dopamin.mestaslovenije.level.menu.ui;
 
+import com.dopamin.mestaslovenije.MainActivity;
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
 import com.dopamin.mestaslovenije.level.menu.MenuLevel;
@@ -13,7 +14,7 @@ public class ButtonLeaderboard extends Button {
 
     @Override
     protected void pressed() {
-
+        MainActivity.getGame().services.showLeaderboard();
     }
 
     @Override

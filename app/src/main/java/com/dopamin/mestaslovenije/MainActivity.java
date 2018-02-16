@@ -1,16 +1,34 @@
 package com.dopamin.mestaslovenije;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.games.Games;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+
+import java.io.Serializable;
+
 public class MainActivity extends Activity {
 
-    static Game game;
+    private static Game game;
     static boolean running = false;
+
+    static ServicesController servicesController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +47,18 @@ public class MainActivity extends Activity {
         }
         getWindow().getDecorView().setSystemUiVisibility(UI_OPTIONS);
 
-        if(game == null) {
-            game = new Game(this);
-            game.resume();
-            running = true;
-        }
-        if(savedInstanceState != null)
-            setContentView(game);
+        setContentView(R.layout.activity_main);
 
+        servicesController = new ServicesController(this);
+        game = findViewById(R.id.game);
+        game.init(this, servicesController);
+
+        running = true;
+
+        servicesController.startSignInIntent();
     }
+
+
 
     @Override
     protected void onStart() {
@@ -47,8 +68,8 @@ public class MainActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        if(running)
-            game.pause();
+        /*if(running)
+            game.pause();*/
         running = false;
     }
 
@@ -57,8 +78,8 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
 
-        if(!running)
-            game.resume();
+       /* if(!running)
+            game.resume();*/
         running = true;
 
         // Set screen orientation to landscape
@@ -79,6 +100,18 @@ public class MainActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        game.stop();
+        //game.stop();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ServicesController.SERVICES_REQUEST_ID) {
+            servicesController.onActivityResult(data);
+        }
+    }
+
+    public static Game getGame(){
+        return game;
     }
 }

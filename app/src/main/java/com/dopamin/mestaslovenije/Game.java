@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.dopamin.mestaslovenije.graphics.Render;
@@ -20,7 +22,7 @@ import com.dopamin.mestaslovenije.math.Vector2f;
 import com.dopamin.mestaslovenije.math.timing.Time;
 import com.dopamin.mestaslovenije.math.timing.Timer;
 
-public class Game extends View implements Time, Runnable {
+public class Game extends View implements Time/*, Runnable*/ {
 
     int updateCount = 0;
 
@@ -30,18 +32,31 @@ public class Game extends View implements Time, Runnable {
 
     DatabaseHelper databaseHelper;
     SQLiteDatabase database;
+    public ServicesController services;
 
     Input input;
     boolean running = false;
 
-    Thread updateThread = null;
+    //Thread updateThread = null;
 
     public void setMenu(Menu menu) {
         this.currentMenu = menu;
     }
 
-    public Game(Context context) {
+    public Game(Context context)
+    {
         super(context);
+    }
+    public Game(Context context, AttributeSet attrs)
+    {
+        super(context, attrs);
+    }
+    public Game(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+    }
+
+    public void init(Context context, ServicesController services){
+        this.services = services;
 
         // Load the locations and start database
         LocationsLoader.am = context.getAssets();
@@ -55,6 +70,8 @@ public class Game extends View implements Time, Runnable {
         input = new Input();
         setOnTouchListener(input);
 
+        Log.e("INITILISED", "HA");
+
         render = new Render(context);
         currentMenu = new MenuMain();
     }
@@ -63,78 +80,6 @@ public class Game extends View implements Time, Runnable {
         // Start the database
         databaseHelper = new DatabaseHelper(context);
         database = databaseHelper.getWritableDatabase();
-/*
-        // Select all
-        Cursor cursor = database.query(DatabaseSchema.Location.TABLE_NAME, null, null, null, null, null, null, null);
-
-        // Display all the table entries
-        while(cursor.moveToNext()) {
-            Log.e("ENTRY !!", cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_NAME)) + " " + cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_N))
-                    + " " + cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_E))+ " " + cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_COUNT))
-                    + " " + cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_STAGE_ID)));
-        }
-        cursor.close();
-*/
-    }
-
-    public synchronized void pause(){
-        running = false;
-        try {
-            updateThread.join();
-        }catch (Exception e){
-
-        }
-    }
-
-    public void resume(){
-        updateThread = new Thread(this);
-        updateThread.start();
-
-        running = true;
-    }
-
-    public void stop(){
-        running = false;
-        try {
-            updateThread.join();
-        }catch (Exception e){
-
-        }
-    }
-
-    @Override
-    public void run() {
-        //super.run();
-        float timerStart = System.nanoTime() / 1000000000.0f;
-        while (running) {
-            float timerNow = System.nanoTime() / 1000000000.0f;
-            if (timerNow - timerStart >= 1 / 30.0) {
-                update(timerNow - timerStart);
-                timerStart = System.nanoTime() / 1000000000.0f;
-                try{
-                    Thread.sleep(15);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-                Thread.yield();
-            }
-        }
-    }
-
-    public void update(float deltaTime) {
-        // Update timers
-        for (int i = 0; i < timers.size(); i++) {
-            Timer t = timers.get(i);
-            t.update(deltaTime);
-        }
-        for (int i = 0; i < timers.size(); i++) {
-            Timer t = timers.get(i);
-            if(t.finished)
-                timers.remove(t);
-        }
-
-        currentMenu.update();
-        currentMenu.updateChildren();
     }
 
     Paint paint = new Paint();
@@ -151,17 +96,18 @@ public class Game extends View implements Time, Runnable {
             Vector2f input = Input.get();
             currentMenu.processInput(input);
         }
+        if(render != null){
+            render.begin(canvas, paint);
+            canvas.save();
 
-        render.begin(canvas, paint);
-        canvas.save();
+            canvas.scale((float) Render.SCREEN_WIDTH / Render.WIDTH, (float) Render.SCREEN_HEIGHT / Render.HEIGHT);
+            render.drawRectangle("#637d69", 0, 0, 1600, 900);
 
-        canvas.scale((float) Render.SCREEN_WIDTH / Render.WIDTH, (float) Render.SCREEN_HEIGHT / Render.HEIGHT);
-        render.drawRectangle("#637d69", 0, 0, 1600, 900);
+            currentMenu.render(render);
+            currentMenu.renderChildren(render);
 
-        currentMenu.render(render);
-        currentMenu.renderChildren(render);
-
-        canvas.restore();
+            canvas.restore();
+        }
         invalidate();
     }
 

@@ -16,19 +16,13 @@ public class PartStageName extends Part {
     public PartStageName(Stage s) {
         super(s);
 
-        timers.add(new TimerLimit(2f, new Action() {
-            @Override
-            public void execute() {
-                stage.nextQuestion();
-            }
-        }));
-
         children.add(new LabelStageName(s.name));
         children.add(new LabelGoal(s.stageNumber));
     }
 
     @Override
     public boolean processInput(Vector2f pos) {
+        stage.nextQuestion();
         return true;
     }
 
