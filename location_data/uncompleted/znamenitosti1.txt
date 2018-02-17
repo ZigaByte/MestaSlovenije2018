@@ -1,20 +1,21 @@
-Prešernov trg
-Divje Babe
-Predjamski Grad
-Seèoveljske soline
-GEOSS
-Mrtvaški ples
-Rimska Nekropola
-Arboretum Volèji Potok
-Lipicanci
-Vaška Situla
-Antonijev rov
-Bolnica Franja
-Velika planina
-Napoleonov most èez Nadižo
-Napoleonov most èez Soèo
-Mlin na Muri
-Èloveška ribica
-Aljažev stolp
-Tromostovje
-Cukrarna
+1, Prešernov trg, 6665, 46.0515555, 14.5060892
+1, Divje Babe, 6665,46.1120106,13.9152179
+1, Seèoveljske soline, 6665, 45.4901265,13.6058142
+1, GEOSS, 6665,46.1203178,14.8154831
+1, Mrtvaški ples, 6665,45.5097108,13.9016072
+1, Rimska Nekropola, 6665,46.255351,15.1209295
+1, Arboretum Volèji Potok, 6665,46.1873418,14.6112648
+1, Lipicanci, 6665,45.6666142,13.8814924
+1, Vaška Situla, 6665,46.1193164,14.8374892
+1, Antonijev rov, 6665,45.9996779,14.0223926
+1, Bolnica Franja, 6665,46.1501473,14.0270361
+1, Velika planina, 6665,46.3033728,14.6492779
+1, Napoleonov most èez Nadižo, 6665,46.229018,13.438867
+1, Napoleonov most èez Soèo, 6665,46.2483496,13.5860864
+1, Mlin na Muri, 6665,46.5923293,16.1669156
+1, Èloveška ribica, 6665,45.7823024,14.2039899
+1, Aljažev stolp, 6665,46.3791994, 13.833916700000032
+1, Tromostovje, 6665,46.0515555, 14.5060892
+1, Cukrarna, 6665,46.0500889,14.5197378
+1, Cankarjev dom, 6665, 46.0500642,14.5005044
+1, Kristalna palaèa, 665, 46.066967,14.5411762

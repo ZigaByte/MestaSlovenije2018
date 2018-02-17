@@ -19,10 +19,8 @@ import com.dopamin.mestaslovenije.level.menu.MenuLevel;
 import com.dopamin.mestaslovenije.level.menu.MenuMain;
 import com.dopamin.mestaslovenije.level.Level;
 import com.dopamin.mestaslovenije.math.Vector2f;
-import com.dopamin.mestaslovenije.math.timing.Time;
-import com.dopamin.mestaslovenije.math.timing.Timer;
 
-public class Game extends View implements Time/*, Runnable*/ {
+public class Game extends View {
 
     int updateCount = 0;
 
@@ -36,8 +34,6 @@ public class Game extends View implements Time/*, Runnable*/ {
 
     Input input;
     boolean running = false;
-
-    //Thread updateThread = null;
 
     public void setMenu(Menu menu) {
         this.currentMenu = menu;
@@ -69,8 +65,6 @@ public class Game extends View implements Time/*, Runnable*/ {
 
         input = new Input();
         setOnTouchListener(input);
-
-        Log.e("INITILISED", "HA");
 
         render = new Render(context);
         currentMenu = new MenuMain();

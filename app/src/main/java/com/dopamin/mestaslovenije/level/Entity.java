@@ -1,16 +1,14 @@
 package com.dopamin.mestaslovenije.level;
 
-import android.util.Log;
 
 import com.dopamin.mestaslovenije.Game;
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.math.Vector2f;
-import com.dopamin.mestaslovenije.math.timing.Time;
 
 import java.util.ArrayList;
 
 
-public abstract class Entity implements Time {
+public abstract class Entity {
 
     protected static Game game;
 
