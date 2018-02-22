@@ -15,6 +15,9 @@ import com.dopamin.mestaslovenije.level.menu.MenuResult;
 import com.dopamin.mestaslovenije.math.Vector2f;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Level extends Entity{
 
@@ -48,10 +51,10 @@ public class Level extends Entity{
         if (currentStage != null)
             currentStage.setActive(false);
 
-        currentStageNumber++;
-
         // Check if we are over with the stages
-        if (currentStageNumber < stages.size()) {
+        if (currentStageNumber < stages.size() - 1) {
+            currentStageNumber++;
+
             children.add(currentStage = stages.get(currentStageNumber));
             currentStage.begin();
         } else {
@@ -62,11 +65,11 @@ public class Level extends Entity{
 
     public void endLevel(boolean completedAllStages){
         if(completedAllStages){
-            game.setMenu(new MenuGameWon(getAllQuestions()));
+            game.setMenu(new MenuGameWon(getFive(false)));
             MainActivity.getGame().services.submitScore((long)getScore());
         }
         else
-            game.setMenu(new MenuGameOver(getAllQuestions()));
+            game.setMenu(new MenuGameOver(getFive(true)));
     }
 
     @Override
@@ -95,13 +98,28 @@ public class Level extends Entity{
 
     private ArrayList<Question> getAllQuestions(){
         ArrayList<Question> questions = new ArrayList<Question>();
-        for(int i = 0; i < currentStageNumber; i++){
+        for(int i = 0; i <= currentStageNumber; i++){
             Stage s = stages.get(i);
             for(int j = 0; j < s.questionsPerStage; j++){
                 questions.add(s.getQuestion(j));
             }
         }
         return questions;
+    }
+
+    private ArrayList<Question> getFive(final boolean best){
+        ArrayList<Question> sorted = getAllQuestions();
+        Collections.sort(sorted, new Comparator<Question>(){
+            @Override
+            public int compare(Question q1, Question q2) {
+                return ((q1.score < q2.score) ? 1 : -1 ) * (best ? 1 : - 1);
+            }
+        });
+        ArrayList<Question> limited = new ArrayList<Question>();
+        for(int i = 0; i < Math.min(sorted.size(), 5); i++){
+            limited.add(sorted.get(i));
+        }
+        return limited;
     }
 
 }

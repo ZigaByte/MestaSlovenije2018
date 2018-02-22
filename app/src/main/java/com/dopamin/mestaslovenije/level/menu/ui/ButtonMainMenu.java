@@ -8,7 +8,7 @@ public class ButtonMainMenu extends Button {
 
 	@Override
 	protected void initLocation() {
-		pos = new Vector2f(1000, 900 - 200);
+		pos = new Vector2f(1100, 900 - 200);
 		size = new Vector2f(500, 100);
 	}
 
