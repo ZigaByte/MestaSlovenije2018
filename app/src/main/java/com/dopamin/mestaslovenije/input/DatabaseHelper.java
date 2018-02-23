@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
-    public static final int DATABASE_VERSION = 5;
+    public static final int DATABASE_VERSION = 7;
     public static final String DATABASE_NAME = "Database.db";
 
     public DatabaseHelper(Context context) {
@@ -33,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DatabaseSchema.Location.SQL_CREATE_LOCATIONS);
         db.execSQL(DatabaseSchema.Stage.SQL_CREATE_STAGES);
+        db.execSQL(DatabaseSchema.Score.SQL_CREATE_SCORES);
 
         // Fill the database. Locations first
         loadStage(db, "mesta1.txt", 0, "Večja mesta");
@@ -79,6 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DatabaseSchema.Location.SQL_DELETE_LOCATIONS);
         db.execSQL(DatabaseSchema.Stage.SQL_DELETE_STAGES);
+        db.execSQL(DatabaseSchema.Score.SQL_DELETE_SCORES); // Should probably transfer data
         onCreate(db);
     }
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {

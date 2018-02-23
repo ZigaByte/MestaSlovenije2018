@@ -6,6 +6,7 @@ import com.dopamin.mestaslovenije.level.menu.ui.ButtonLeaderboard;
 import com.dopamin.mestaslovenije.level.menu.ui.ButtonPlay;
 import com.dopamin.mestaslovenije.level.menu.ui.ButtonTutorial;
 import com.dopamin.mestaslovenije.level.menu.ui.LabelMainMenu;
+import com.dopamin.mestaslovenije.level.ui.LabelBestScore;
 
 public class MenuMain extends Menu {
 
@@ -21,6 +22,7 @@ public class MenuMain extends Menu {
 		children.add(new ButtonTutorial());
 		children.add(new ButtonLeaderboard());
 		children.add(new ButtonAbout());
+		children.add(new LabelBestScore());
 	}
 
 	@Override

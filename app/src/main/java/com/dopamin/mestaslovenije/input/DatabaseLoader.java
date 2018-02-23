@@ -1,5 +1,6 @@
 package com.dopamin.mestaslovenije.input;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -89,4 +90,36 @@ public class DatabaseLoader {
         return cursor.getString(cursor.getColumnIndex(DatabaseSchema.Stage.COLUMN_NAME));
     }
 
+    public static void postNewScore(int score){
+        // Insert the new score
+        ContentValues valuesStage = new ContentValues();
+        valuesStage.put(DatabaseSchema.Score.COLUMN_SCORE, score);
+        database.insert(DatabaseSchema.Score.TABLE_NAME, null, valuesStage);
+    }
+
+    public static int getBestScore(){
+        String[] projection = {
+                DatabaseSchema.Score.COLUMN_SCORE,
+        };
+
+        String selection = null;
+        String[] selectionArgs = {};
+
+        String sortOrder = DatabaseSchema.Score.COLUMN_SCORE + " ASC";
+
+        Cursor cursor = database.query(
+                DatabaseSchema.Score.TABLE_NAME,                     // The table to query
+                projection,                               // The columns to return
+                selection,                                // The columns for the WHERE clause
+                selectionArgs,                            // The values for the WHERE clause
+                null,                                     // don't group the rows
+                null,                                     // don't filter by row groups
+                sortOrder                                 // The sort order
+        );
+
+        if(cursor.moveToFirst())
+            return cursor.getInt(cursor.getColumnIndex(DatabaseSchema.Score.COLUMN_SCORE));
+        else
+            return -1;
+    }
 }

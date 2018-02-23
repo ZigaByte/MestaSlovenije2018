@@ -5,6 +5,7 @@ import android.util.Log;
 import com.dopamin.mestaslovenije.MainActivity;
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
+import com.dopamin.mestaslovenije.input.DatabaseLoader;
 import com.dopamin.mestaslovenije.level.Entity;
 import com.dopamin.mestaslovenije.level.components.Question;
 import com.dopamin.mestaslovenije.level.components.Stage;
@@ -36,9 +37,9 @@ public class Level extends Entity{
         stages.add(new Stage(this, StageLocations.create(0), 0));
         stages.add(new Stage(this, StageLocations.create(1), 1));
         stages.add(new Stage(this, StageLocations.create(2), 2));
-        stages.add(new Stage(this, StageLocations.create(3), 3));
+        /*stages.add(new Stage(this, StageLocations.create(3), 3));
         stages.add(new Stage(this, StageLocations.create(4), 4));
-        /*stages.add(new Stage(this, StageLocations.create(5), 5));
+        stages.add(new Stage(this, StageLocations.create(5), 5));
         stages.add(new Stage(this, StageLocations.create(6), 6));
         stages.add(new Stage(this, StageLocations.create(7), 7));
         stages.add(new Stage(this, StageLocations.create(8), 8));
@@ -73,6 +74,7 @@ public class Level extends Entity{
         if(completedAllStages){
             game.setMenu(new MenuGameWon(getFive(false)));
             MainActivity.getGame().services.submitScore((long)getScore());
+            DatabaseLoader.postNewScore((int)getScore());
         }
         else
             game.setMenu(new MenuGameOver(getFive(true)));
