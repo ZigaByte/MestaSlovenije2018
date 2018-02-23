@@ -1,7 +1,7 @@
 1, Termoelektrarna Šoštanj, 6665, 46.3740381, 15.051427399999966
 1, Termoelektrarna Brestanica, 6665, 45.9975835, 15.47853950000001
 1, Termoelektrarna Trbovlje, 6665, 46.1267806, 15.054953999999952
-1, Termoelektrarna Toplarna Ljubljana, 6665, 46.0581183, 14.5437273
+1, Toplarna Ljubljana, 6665, 46.0581183, 14.5437273
 1, Hidroelektrarna Vrhovo, 1, 46.0441634, 15.2235248
 1, Hidroelektrarna Boštanj, 6665, 46.0170213, 15.281215999999972
 1, Hidroelektrarna Blanca, 151, 45.9895689,15.381197

@@ -38,10 +38,16 @@ public class Level extends Entity{
         stages.add(new Stage(this, StageLocations.create(2), 2));
         stages.add(new Stage(this, StageLocations.create(3), 3));
         stages.add(new Stage(this, StageLocations.create(4), 4));
-        stages.add(new Stage(this, StageLocations.create(5), 5));
+        /*stages.add(new Stage(this, StageLocations.create(5), 5));
         stages.add(new Stage(this, StageLocations.create(6), 6));
         stages.add(new Stage(this, StageLocations.create(7), 7));
-
+        stages.add(new Stage(this, StageLocations.create(8), 8));
+        stages.add(new Stage(this, StageLocations.create(9), 9));
+        stages.add(new Stage(this, StageLocations.create(10), 10));
+        stages.add(new Stage(this, StageLocations.create(11), 11));
+        stages.add(new Stage(this, StageLocations.create(12), 12));
+        stages.add(new Stage(this, StageLocations.create(13), 13));
+        stages.add(new Stage(this, StageLocations.create(14), 14));*/
     }
 
     /**

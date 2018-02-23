@@ -43,6 +43,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         loadStage(db, "elektrarne.txt", 5, "Elektrarne");
         loadStage(db, "stadioni.txt", 6, "Stadioni");
         loadStage(db, "zdravilisca.txt", 7, "Zdravilisca");
+        loadStage(db, "muzeji.txt", 8, "Muzeji");
+        loadStage(db, "naravne_znamenitosti.txt", 9, "Naravne znamenitosti");
+        loadStage(db, "smucisca.txt", 10, "Smucisca");
+        loadStage(db, "podjetja.txt", 11, "Podjetja");
+        loadStage(db, "znamenitosti.txt", 12, "Znamenitosti");
+        loadStage(db, "izviri.txt", 13, "Izviri");
+        loadStage(db, "gradovi.txt", 14, "Gradovi");
     }
 
     // Called from onCreate for every stage
