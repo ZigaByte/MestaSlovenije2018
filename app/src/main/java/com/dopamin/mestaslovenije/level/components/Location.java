@@ -20,4 +20,8 @@ public class Location {
 	public Vector2f getPos() {
 		return new Vector2f(coordinate.IMAGE_X, coordinate.IMAGE_Y);
 	}
+
+	public int getId(){
+		return id;
+	}
 }

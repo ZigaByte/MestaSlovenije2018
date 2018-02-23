@@ -6,6 +6,7 @@ import android.graphics.Paint;
 
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
+import com.dopamin.mestaslovenije.input.DatabaseLoader;
 import com.dopamin.mestaslovenije.level.components.Stage;
 import com.dopamin.mestaslovenije.level.ui.LabelGoalGame;
 import com.dopamin.mestaslovenije.level.ui.LabelQuestion;
@@ -33,6 +34,9 @@ public class PartAnswer extends Part {
 	@Override
 	public boolean processInput(Vector2f pos) {
 		stage.nextQuestion();
+
+		DatabaseLoader.increateLocationCount(partQuestion.getQuestion().location.getId());
+
 		return true;
 	}
 
