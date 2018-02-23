@@ -20,6 +20,9 @@ public class DatabaseLoader {
 
     static SQLiteDatabase database;
 
+    /**
+     * Returns an arraylist of Locations. Sorted by number of times asked ASC.
+     * */
     public static ArrayList<Location> loadStageLocations(int stageId){
         String[] projection = {
                 DatabaseSchema.Location._ID,
@@ -32,8 +35,7 @@ public class DatabaseLoader {
         String selection = DatabaseSchema.Location.COLUMN_STAGE_ID + " = ?";
         String[] selectionArgs = { stageId+"" };
 
-        //String sortOrder = FeedEntry.COLUMN_NAME_SUBTITLE + " DESC";
-        String sortOrder = null;
+        String sortOrder = DatabaseSchema.Location.COLUMN_COUNT+ " ASC";
 
         Cursor cursor = database.query(
                 DatabaseSchema.Location.TABLE_NAME,                     // The table to query
@@ -58,9 +60,10 @@ public class DatabaseLoader {
             float n = cursor.getFloat(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_N));
             float e = cursor.getFloat(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_E));
             Coordinate c = new Coordinate(n, e);
+            int count  = cursor.getInt(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_COUNT));
             String name = cursor.getString(cursor.getColumnIndex(DatabaseSchema.Location.COLUMN_NAME));
 
-            toReturn.add(new Location(id, name, c));
+            toReturn.add(new Location(id, name, c, count));
         }while(cursor.moveToNext());
 
         return toReturn;

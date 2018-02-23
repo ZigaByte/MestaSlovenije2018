@@ -33,12 +33,16 @@ public class StageLocations {
 
 		Random random = new Random();
 
+		// Get the number of times the least asked question was asked.
+		int minCount = allLocations.get(0).count;
+		int attempts = 0;
+
 		// Select questions in a random order until either enough were chosen or
 		// all were chosen
 		while (locations.size() < questionsPerStage && locations.size() < allLocations.size()) {
 			Location l = allLocations.get(random.nextInt(allLocations.size()));
 
-			if (!locations.contains(l))
+			if (!locations.contains(l) && (minCount + 1 >= l.count || attempts++ > 7))
 				locations.add(l);
 		}
 
