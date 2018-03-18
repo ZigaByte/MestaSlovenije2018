@@ -1,5 +1,6 @@
 package com.dopamin.mestaslovenije.level.menu;
 
+import com.dopamin.mestaslovenije.MainActivity;
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
 import com.dopamin.mestaslovenije.level.Level;
@@ -17,6 +18,8 @@ public abstract class MenuResult extends Menu {
 
 	public MenuResult(ArrayList<Question> questions){
 		this.questions = questions;
+
+		((MainActivity)MainActivity.getGame().context).showAd();
 	}
 
 	@Override

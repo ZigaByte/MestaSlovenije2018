@@ -10,6 +10,10 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -27,6 +31,8 @@ public class MainActivity extends Activity {
 
     private static Game game;
     static boolean running = false;
+
+    private InterstitialAd interstitialAd;
 
     static ServicesController servicesController;
 
@@ -60,6 +66,52 @@ public class MainActivity extends Activity {
 
             //servicesController.startSignInIntent();
        //}
+
+        MobileAds.initialize(this, "ca-app-pub-9896834767828630~9178258660");
+
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId("ca-app-pub-9896834767828630/1738752340");
+        //interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        interstitialAd.loadAd(new AdRequest.Builder().build());
+        interstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                Log.e("Ad", "Ad loaded");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                // Code to be executed when an ad request fails.
+                Log.e("Ad", "onAdFailedToLoad " + errorCode);
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when the ad is displayed.
+                Log.e("Ad", "onAdOpened");
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+                Log.e("Ad", "onAdLeftApplication");
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when when the interstitial ad is closed.
+                Log.e("Ad", "onAdClosed");
+                interstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+        });
+    }
+
+    public void showAd(){
+        if (interstitialAd.isLoaded()) {
+            interstitialAd.show();
+        } else {
+            interstitialAd.loadAd(new AdRequest.Builder().build());
+        }
     }
 
 
