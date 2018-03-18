@@ -22,7 +22,7 @@ import com.dopamin.mestaslovenije.math.Vector2f;
 
 public class Game extends View {
 
-    int updateCount = 0;
+    public Context context;
 
     private Render render;
 
@@ -42,13 +42,16 @@ public class Game extends View {
     public Game(Context context)
     {
         super(context);
+        this.context = context;
     }
     public Game(Context context, AttributeSet attrs)
     {
         super(context, attrs);
+        this.context = context;
     }
     public Game(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        this.context = context;
     }
 
     public void init(Context context, ServicesController services){
