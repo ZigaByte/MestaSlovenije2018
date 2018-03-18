@@ -73,7 +73,7 @@ public class Level extends Entity{
     public void endLevel(boolean completedAllStages){
         if(completedAllStages){
             game.setMenu(new MenuGameWon(getFive(false)));
-            MainActivity.getGame().services.submitScore((long)getScore());
+            //MainActivity.getGame().services.submitScore((long)getScore());
             DatabaseLoader.postNewScore((int)getScore());
         }
         else

@@ -20,8 +20,8 @@ public class MenuMain extends Menu {
 		children.add(new LabelMainMenu());
 		children.add(new ButtonPlay());
 		children.add(new ButtonTutorial());
-		children.add(new ButtonLeaderboard());
-		children.add(new ButtonAbout());
+		//children.add(new ButtonLeaderboard());
+		//children.add(new ButtonAbout());
 		children.add(new LabelBestScore());
 	}
 

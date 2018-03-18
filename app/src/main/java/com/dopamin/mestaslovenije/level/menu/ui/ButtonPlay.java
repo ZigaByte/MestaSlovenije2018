@@ -18,7 +18,7 @@ public class ButtonPlay extends Button {
 
 	@Override
 	protected void initLocation() {
-		pos = new Vector2f(437, Render.HEIGHT -321);
+		pos = new Vector2f(430, Render.HEIGHT -350);
 		size = new Vector2f(367, 281);
 	}
 

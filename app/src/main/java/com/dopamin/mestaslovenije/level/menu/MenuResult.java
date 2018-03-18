@@ -43,7 +43,7 @@ public abstract class MenuResult extends Menu {
 			Coordinate answer = q.answer;
 			Coordinate correct = q.location.coordinate;
 
-			r.drawLine("#000000", correct.IMAGE_X, correct.IMAGE_Y, answer.IMAGE_X, answer.IMAGE_Y);
+			r.drawLine("#ffffff", correct.IMAGE_X, correct.IMAGE_Y, answer.IMAGE_X, answer.IMAGE_Y);
 		}
 		// Draw the points
 		int sizeX = 42, sizeY = 63;

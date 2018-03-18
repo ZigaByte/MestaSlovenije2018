@@ -12,4 +12,9 @@ public class LabelBestScore extends LabelScore {
         super(DatabaseLoader.getBestScore());
     }
 
+    @Override
+    protected void initLocation() {
+        super.initLocation();
+        pos = pos.add(-243, -60);
+    }
 }

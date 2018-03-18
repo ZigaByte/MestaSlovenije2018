@@ -51,15 +51,15 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        if(savedInstanceState != null){
-            servicesController = new ServicesController(this);
+        //if(savedInstanceState != null){
+            //servicesController = new ServicesController(this);
             game = findViewById(R.id.game);
             game.init(this, servicesController);
 
             running = true;
 
-            servicesController.startSignInIntent();
-        }
+            //servicesController.startSignInIntent();
+       //}
     }
 
 

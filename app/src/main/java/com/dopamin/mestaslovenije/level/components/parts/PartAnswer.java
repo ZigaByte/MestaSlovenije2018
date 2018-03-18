@@ -47,7 +47,7 @@ public class PartAnswer extends Part {
 		// Nariši črto in waypointa
 		Coordinate answer = partQuestion.getAnswer();
 		Coordinate correct = partQuestion.getQuestion().location.coordinate;
-		r.drawLine("#000000", correct.IMAGE_X, correct.IMAGE_Y, answer.IMAGE_X, answer.IMAGE_Y);
+		r.drawLine("#ffffff", correct.IMAGE_X, correct.IMAGE_Y, answer.IMAGE_X, answer.IMAGE_Y);
 		int sizeX = 42, sizeY = 63;
 		if(answer.IMAGE_Y > correct.IMAGE_Y){
 			r.drawTexture(textureCorrect, correct.IMAGE_X - sizeX / 2, correct.IMAGE_Y - (sizeY * 9 / 10) , sizeX, sizeY);

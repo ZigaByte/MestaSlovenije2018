@@ -95,7 +95,7 @@ public class Game extends View {
             canvas.save();
 
             canvas.scale((float) Render.SCREEN_WIDTH / Render.WIDTH, (float) Render.SCREEN_HEIGHT / Render.HEIGHT);
-            render.drawRectangle("#637d69", 0, 0, 1600, 900);
+            render.drawRectangle("#9b9b9b", 0, 0, 1600, 900);
 
             currentMenu.render(render);
             currentMenu.renderChildren(render);
