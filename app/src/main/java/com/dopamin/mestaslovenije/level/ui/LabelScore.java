@@ -18,7 +18,7 @@ public class LabelScore extends Label {
 
     @Override
     protected void initLocation() {
-        pos = new Vector2f(1103, 900 - 194);
+        pos = new Vector2f(1103, 716);
         size = new Vector2f(436, 110);
     }
 
@@ -30,7 +30,8 @@ public class LabelScore extends Label {
     public void render(Render r) {
         super.render(r);
 
-        r.drawText((String.format("%.1f", currentScore) + " km").replace('.', ','), "#FFFFFF", 1320, 780, 300, -1, 60);
+        r.drawText(((int)currentScore)+ " km", "#FFFFFF", pos.x + 217, pos.y + 80, 300, -1, 60);
+
     }
 
 }

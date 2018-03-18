@@ -171,7 +171,6 @@ public class Render {
 
     public void drawTexture(Bitmap texture, float x, float y, float w, float h, float rotation) {
        // The draw method requires rotation in degrees.
-        rotation = rotation * 180f / 3.14f;
         canvas.save();
         canvas.translate(x + w / 2, y + h / 2);
         canvas.rotate(rotation);

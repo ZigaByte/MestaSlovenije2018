@@ -56,6 +56,21 @@ public final class DatabaseSchema {
                 "DROP TABLE IF EXISTS " + TABLE_NAME;
     }
 
+    /* Inner class that defines the table contents */
+    public static class Score implements BaseColumns {
+        public static final String TABLE_NAME = "score";
+        public static final String COLUMN_SCORE = "score";
+
+        public static final String SQL_CREATE_SCORES =
+                "CREATE TABLE " + TABLE_NAME + " (" +
+                        _ID + " INTEGER PRIMARY KEY," +
+                        COLUMN_SCORE + " INT)";
+
+
+        public static final String SQL_DELETE_SCORES =
+                "DROP TABLE IF EXISTS " + TABLE_NAME;
+    }
+
 
 
 }

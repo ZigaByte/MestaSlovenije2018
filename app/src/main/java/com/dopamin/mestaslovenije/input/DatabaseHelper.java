@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
-    public static final int DATABASE_VERSION = 5;
+    public static final int DATABASE_VERSION = 8;
     public static final String DATABASE_NAME = "Database.db";
 
     public DatabaseHelper(Context context) {
@@ -33,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DatabaseSchema.Location.SQL_CREATE_LOCATIONS);
         db.execSQL(DatabaseSchema.Stage.SQL_CREATE_STAGES);
+        db.execSQL(DatabaseSchema.Score.SQL_CREATE_SCORES);
 
         // Fill the database. Locations first
         loadStage(db, "mesta1.txt", 0, "Večja mesta");
@@ -43,6 +44,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         loadStage(db, "elektrarne.txt", 5, "Elektrarne");
         loadStage(db, "stadioni.txt", 6, "Stadioni");
         loadStage(db, "zdravilisca.txt", 7, "Zdravilisca");
+        loadStage(db, "muzeji.txt", 8, "Muzeji");
+        loadStage(db, "naravne_znamenitosti.txt", 9, "Naravne znamenitosti");
+        loadStage(db, "smucisca.txt", 10, "Smucisca");
+        loadStage(db, "podjetja.txt", 11, "Podjetja");
+        loadStage(db, "znamenitosti.txt", 12, "Znamenitosti");
+        loadStage(db, "izviri.txt", 13, "Izviri");
+        loadStage(db, "gradovi.txt", 14, "Gradovi");
     }
 
     // Called from onCreate for every stage
@@ -72,6 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DatabaseSchema.Location.SQL_DELETE_LOCATIONS);
         db.execSQL(DatabaseSchema.Stage.SQL_DELETE_STAGES);
+        db.execSQL(DatabaseSchema.Score.SQL_DELETE_SCORES); // Should probably transfer data
         onCreate(db);
     }
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {

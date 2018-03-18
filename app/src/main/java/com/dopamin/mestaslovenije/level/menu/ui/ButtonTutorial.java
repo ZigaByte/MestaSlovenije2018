@@ -15,7 +15,7 @@ public class ButtonTutorial extends Button {
 
 	@Override
 	protected void initLocation() {
-		pos = new Vector2f(867, Render.HEIGHT -435);
+		pos = new Vector2f(852, Render.HEIGHT -390);
 		size = new Vector2f(436, 123);
 	}
 

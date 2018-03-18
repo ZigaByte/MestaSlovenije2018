@@ -13,6 +13,7 @@ public abstract class Label extends UIElement {
 
     protected Vector2f pos;
     protected Vector2f size;
+    protected float rotation;
 
     public Label() {
         super();
@@ -25,6 +26,6 @@ public abstract class Label extends UIElement {
 
     @Override
     public void render(Render r) {
-        r.drawTexture(texture, pos.x, pos.y, size.x, size.y);
+        r.drawTexture(texture, pos.x, pos.y, size.x, size.y, rotation);
     }
 }

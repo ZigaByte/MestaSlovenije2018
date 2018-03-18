@@ -1,6 +1,8 @@
 package com.dopamin.mestaslovenije.level.menu.ui;
 
 import android.graphics.Paint;
+import android.os.Debug;
+import android.util.Log;
 
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
@@ -15,11 +17,17 @@ public class LabelMainMenu extends Label {
 
     @Override
     protected void initLocation() {
-        pos = new Vector2f(138, Render.HEIGHT - 860);
+        pos = new Vector2f(200, Render.HEIGHT - 880);
         size = new Vector2f(1138, 552);
+        rotation = 6;
     }
 
     protected void initTexture(){
         texture = SpriteLoader.mainMenuLabel;
+    }
+
+    @Override
+    public void render(Render r) {
+        super.render(r);
     }
 }
