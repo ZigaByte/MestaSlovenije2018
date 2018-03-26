@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 public class MenuGameWon extends MenuResult {
 
-    public MenuGameWon(ArrayList<Question> questions){
-        super(questions);
+    public MenuGameWon(int score, ArrayList<Question> questions){
+        super(score, questions);
     }
 
     @Override

@@ -1,12 +1,10 @@
 package com.dopamin.mestaslovenije.level.menu;
 
 import com.dopamin.mestaslovenije.graphics.Render;
-import com.dopamin.mestaslovenije.level.menu.ui.ButtonAbout;
-import com.dopamin.mestaslovenije.level.menu.ui.ButtonLeaderboard;
 import com.dopamin.mestaslovenije.level.menu.ui.ButtonPlay;
 import com.dopamin.mestaslovenije.level.menu.ui.ButtonTutorial;
 import com.dopamin.mestaslovenije.level.menu.ui.LabelMainMenu;
-import com.dopamin.mestaslovenije.level.ui.LabelBestScore;
+import com.dopamin.mestaslovenije.level.menu.ui.LabelBestScore;
 
 public class MenuMain extends Menu {
 

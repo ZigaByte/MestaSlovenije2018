@@ -6,6 +6,7 @@ import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
 import com.dopamin.mestaslovenije.level.components.Question;
 import com.dopamin.mestaslovenije.level.menu.ui.AnswerArrowTutorial;
+import com.dopamin.mestaslovenije.level.menu.ui.QuestionArrowTutorial;
 import com.dopamin.mestaslovenije.level.ui.LabelQuestion;
 import com.dopamin.mestaslovenije.math.Coordinate;
 import com.dopamin.mestaslovenije.math.Vector2f;
@@ -29,6 +30,7 @@ public class MenuTutorialSecond extends Menu {
         // This element is data dependent. So this constructor has to run first
         children.add(new LabelQuestion(question.location.name));
         children.add(new AnswerArrowTutorial());
+        children.add(new QuestionArrowTutorial());
     }
 
     @Override
@@ -64,7 +66,7 @@ public class MenuTutorialSecond extends Menu {
             r.drawTexture(textureAnswer, answer.IMAGE_X - sizeX / 2, answer.IMAGE_Y - (sizeY * 9 / 10) , sizeX, sizeY);
             r.drawTexture(textureCorrect, correct.IMAGE_X - sizeX / 2, correct.IMAGE_Y - (sizeY * 9 / 10) , sizeX, sizeY);
         }
-        r.drawText((String.format("%.1f", question.score) + " km").replace('.', ','), "#FFFFFF", correct.IMAGE_X, correct.IMAGE_Y - sizeY, 5000, -1, 30);
+        r.drawText( question.score + " km", "#FFFFFF", correct.IMAGE_X, correct.IMAGE_Y - sizeY, 5000, -1, 30);
 
     }
 }

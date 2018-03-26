@@ -13,8 +13,8 @@ import java.util.Queue;
 
 public class MenuGameOver extends MenuResult {
 
-    public MenuGameOver(ArrayList<Question> questions){
-        super(questions);
+    public MenuGameOver(int score, ArrayList<Question> questions){
+        super(score, questions);
     }
 
     @Override

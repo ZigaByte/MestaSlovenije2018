@@ -30,8 +30,12 @@ public class LabelScore extends Label {
     public void render(Render r) {
         super.render(r);
 
-        r.drawText(((int)currentScore)+ " km", "#FFFFFF", pos.x + 217, pos.y + 80, 300, -1, 60);
+        r.drawText(((int)currentScore)+ " km", "#FFFFFF", pos.x + 217, pos.y + 75, 300, -0.5f, 60);
 
+    }
+
+    public void setScore(int currentScore){
+        this.currentScore = currentScore;
     }
 
 }

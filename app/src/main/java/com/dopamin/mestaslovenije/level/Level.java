@@ -72,12 +72,13 @@ public class Level extends Entity{
 
     public void endLevel(boolean completedAllStages){
         if(completedAllStages){
-            game.setMenu(new MenuGameWon(getFive(false)));
+            game.setMenu(new MenuGameWon((int)getScore(), getX(1, false)));
             //MainActivity.getGame().services.submitScore((long)getScore());
             DatabaseLoader.postNewScore((int)getScore());
         }
-        else
-            game.setMenu(new MenuGameOver(getFive(true)));
+        else{
+            game.setMenu(new MenuGameOver((int)getScore(), getX(1, true)));
+        }
     }
 
     @Override
@@ -115,7 +116,7 @@ public class Level extends Entity{
         return questions;
     }
 
-    private ArrayList<Question> getFive(final boolean best){
+    private ArrayList<Question> getX(final int x, final boolean best){
         ArrayList<Question> sorted = getAllQuestions();
         Collections.sort(sorted, new Comparator<Question>(){
             @Override
@@ -124,10 +125,11 @@ public class Level extends Entity{
             }
         });
         ArrayList<Question> limited = new ArrayList<Question>();
-        for(int i = 0; i < Math.min(sorted.size(), 5); i++){
+        for(int i = 0; i < Math.min(sorted.size(), x); i++){
             limited.add(sorted.get(i));
         }
         return limited;
     }
+
 
 }

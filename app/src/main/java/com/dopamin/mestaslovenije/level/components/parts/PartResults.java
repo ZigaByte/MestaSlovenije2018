@@ -67,7 +67,7 @@ public class PartResults extends Part {
             Question q = stage.getQuestion(i);
             Coordinate answer = q.answer;
             Coordinate correct = q.location.coordinate;
-            r.drawText((String.format("%.1f", q.score) + " km").replace('.', ','), "#FFFFFF", correct.IMAGE_X, correct.IMAGE_Y - sizeY, 5000, -1, 30);
+            r.drawText(q.score + " km", "#FFFFFF", correct.IMAGE_X, correct.IMAGE_Y - sizeY, 5000, -1, 30);
         }
     }
 }

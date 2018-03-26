@@ -7,7 +7,7 @@ public class Question {
 	public Location location;
 	public Coordinate answer;
 
-	public float score;
+	public int score;
 
 	public Question(Location location) {
 		this.location = location;
@@ -16,7 +16,7 @@ public class Question {
 	public void answer(Coordinate answer) {
 		this.answer = answer;
 
-		score = Coordinate.distanceInKilometers(answer, location.coordinate);
+		score = (int)Coordinate.distanceInKilometers(answer, location.coordinate);
 		//System.out.printf("Press> %f, %f,  Actual> %f, %f\n", answer.n, answer.e, location.coordinate.n, location.coordinate.e);
 		//System.out.println(score);
 	}

@@ -3,10 +3,12 @@ package com.dopamin.mestaslovenije.level.menu;
 import com.dopamin.mestaslovenije.MainActivity;
 import com.dopamin.mestaslovenije.graphics.Render;
 import com.dopamin.mestaslovenije.graphics.SpriteLoader;
+import com.dopamin.mestaslovenije.level.Entity;
 import com.dopamin.mestaslovenije.level.Level;
 import com.dopamin.mestaslovenije.level.components.Question;
 import com.dopamin.mestaslovenije.level.menu.ui.ButtonMainMenu;
 import com.dopamin.mestaslovenije.level.ui.LabelGameWon;
+import com.dopamin.mestaslovenije.level.ui.LabelScore;
 import com.dopamin.mestaslovenije.math.Coordinate;
 
 import java.lang.reflect.Array;
@@ -16,16 +18,19 @@ public abstract class MenuResult extends Menu {
 
 	private ArrayList<Question> questions;
 
-	public MenuResult(ArrayList<Question> questions){
+	public MenuResult(int score, ArrayList<Question> questions){
 		this.questions = questions;
 
 		((MainActivity)MainActivity.getGame().context).showAd();
+
+		getLabelScore().setScore(score);
 	}
 
 	@Override
 	public void addElements() {
 		children.add(new Background());
 		children.add(new ButtonMainMenu());
+		children.add(new LabelScore(0));
 	}
 
 	@Override
@@ -66,8 +71,18 @@ public abstract class MenuResult extends Menu {
 		for (Question q : questions) {
 			Coordinate answer = q.answer;
 			Coordinate correct = q.location.coordinate;
-			r.drawText((String.format("%.1f", q.score) + " km").replace('.', ','), "#FFFFFF", correct.IMAGE_X, correct.IMAGE_Y - sizeY, 5000, -1, 30);
+			//r.drawText(q.score + " km", "#FFFFFF", correct.IMAGE_X, correct.IMAGE_Y - sizeY, 5000, -1, 30);
+			r.drawText(q.location.name, "#FFFFFF", correct.IMAGE_X, correct.IMAGE_Y - sizeY, 5000, -1, 30);
 		}
+	}
+
+	public LabelScore getLabelScore(){
+		for (Entity e: children){
+			if(e instanceof  LabelScore){
+				return (LabelScore) e;
+			}
+		}
+		return null;
 	}
 
 
