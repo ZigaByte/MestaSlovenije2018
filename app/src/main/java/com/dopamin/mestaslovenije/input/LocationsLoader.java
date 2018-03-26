@@ -28,7 +28,7 @@ public class LocationsLoader {
             String s;
             while ((s = br.readLine()) != null) {
                 String[] parts = s.split(",");
-
+                if(parts.length < 5) continue;
                 //int id = Integer.parseInt(parts[0].trim());
                 String name = parts[1].trim();
                 int population = Integer.parseInt(parts[2].trim());

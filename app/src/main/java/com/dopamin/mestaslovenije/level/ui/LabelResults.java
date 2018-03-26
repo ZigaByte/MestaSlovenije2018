@@ -29,7 +29,7 @@ public class LabelResults extends Label{
     @Override
     public void render(Render r) {
         super.render(r);
-        String text = passed ? "Stopnja opravljena" : "Cilj prekoračen!";
+        String text = passed ? "Rezultati" : "Cilj prekoračen!";
         r.drawText(text, "#FFFFFF", 375, 165, 650, 1.8f, 90);
     }
 }

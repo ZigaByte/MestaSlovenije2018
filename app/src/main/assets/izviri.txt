@@ -1,7 +1,7 @@
-﻿1, Izvir Bohinjske Bistrice, 1, 46.2559994, 13.9199646
+1, Izvir Bohinjske Bistrice, 1, 46.2559994, 13.9199646
 1, Izvir Soče, 1, 46.4118443, 13.7238235
 1, Slap Savica, 1, 46.2927863,13.7964506
-1, Tolminska korita, 1, 46.3274735,14.5900744
+1, Tolminska korita, 1, 46.1998532,13.7422926
 1, Zelenci, 1, 46.4925096,13.7373753
 1, Izvir Tolminke, 1, 46.2581252,13.7269591
 1, Izvir Krope, 1, 46.2850154,14.1935436

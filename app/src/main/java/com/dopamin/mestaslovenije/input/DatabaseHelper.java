@@ -38,19 +38,19 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         // Fill the database. Locations first
         loadStage(db, "mesta1.txt", 0, "Večja mesta");
         loadStage(db, "mesta2.txt", 1, "Srednja mesta");
-        loadStage(db, "mesta3.txt", 2, "Manjša mesta");
-        loadStage(db, "mesta4.txt", 3, "Majhna mesta");
-        loadStage(db, "gore.txt", 4, "Gore");
-        loadStage(db, "elektrarne.txt", 5, "Elektrarne");
-        loadStage(db, "stadioni.txt", 6, "Stadioni");
-        loadStage(db, "zdravilisca.txt", 7, "Zdravilisca");
-        loadStage(db, "muzeji.txt", 8, "Muzeji");
+        loadStage(db, "gore.txt", 2, "Gore");
+        loadStage(db, "elektrarne.txt", 3, "Elektrarne");
+        loadStage(db, "mesta3.txt", 4, "Manjša mesta");
+        loadStage(db, "mesta4.txt", 5, "Majhna mesta");
+        loadStage(db, "znamenitosti.txt", 6, "Znamenitosti");
+        loadStage(db, "smucisca.txt", 7, "Smučišča");
+        loadStage(db, "stadioni.txt", 8, "Stadioni");
         loadStage(db, "naravne_znamenitosti.txt", 9, "Naravne znamenitosti");
-        loadStage(db, "smucisca.txt", 10, "Smucisca");
-        loadStage(db, "podjetja.txt", 11, "Podjetja");
-        loadStage(db, "znamenitosti.txt", 12, "Znamenitosti");
+        loadStage(db, "podjetja.txt", 10, "Podjetja");
+        loadStage(db, "zdravilisca.txt", 11, "Zdravilišča");
+        loadStage(db, "gradovi.txt", 12, "Gradovi");
         loadStage(db, "izviri.txt", 13, "Izviri");
-        loadStage(db, "gradovi.txt", 14, "Gradovi");
+        loadStage(db, "muzeji.txt", 14, "Muzeji");
     }
 
     // Called from onCreate for every stage
@@ -62,6 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.insert(DatabaseSchema.Stage.TABLE_NAME, null, valuesStage);
 
         // Insert all the locations
+        Log.e("Hello", file);
         ArrayList<Location> locations = LocationsLoader.load(file);
         for(Location l : locations){
             //Log.e("INserting into " + stageName, l.name);

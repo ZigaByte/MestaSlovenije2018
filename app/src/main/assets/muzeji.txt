@@ -1,4 +1,4 @@
-﻿1, Prešernova rojstna hiša, 6665,46.3878862,14.1473975
+1, Prešernova rojstna hiša, 6665,46.3878862,14.1473975
 1, Slovenski planinski muzej, 6665,46.4579537,13.9360382
 1, Mestna galerija Ljubljana, 6665,46.0494931,14.5063412
 1, Antonijev rov, 6665,45.9996619,14.0223808
@@ -10,7 +10,8 @@
 1, Narodna galerija, 6665,46.0540676,14.500116
 1, Narodni muzej Slovenije, 6665,46.0519959,14.4997681
 1, Tehniški muzej - Bistra, 6665,45.9465535,14.3322375
-1, Vojaški muzej Slovenske vojske, 6665,45.6681375,14.1884226
+1, Park vojaške zgodovine, 6665,45.6681375,14.1884226
+1, Vojaški muzej Slovenske vojske, 6665,46.5480717,15.6307844
 1, Trubarjeva domačija, 6665,45.851741,14.6221421
 1, Pomorski muzej, 6665,45.5275286,13.568425
 1, Muzej solinarstva, 6665,45.4761686,13.5937718
