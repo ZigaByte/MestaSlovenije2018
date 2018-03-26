@@ -10,6 +10,7 @@ import com.dopamin.mestaslovenije.level.components.Stage;
 import com.dopamin.mestaslovenije.level.ui.LabelGoalGame;
 import com.dopamin.mestaslovenije.level.ui.LabelResults;
 import com.dopamin.mestaslovenije.level.ui.LabelScore;
+import com.dopamin.mestaslovenije.level.ui.PressAnywhere;
 import com.dopamin.mestaslovenije.math.Coordinate;
 import com.dopamin.mestaslovenije.math.Vector2f;
 
@@ -29,6 +30,7 @@ public class PartResults extends Part {
         children.add(new LabelScore(stage.getLevel().getScore()));
         children.add(new LabelResults(passed));
         children.add(new LabelGoalGame(stage.stageNumber));
+        children.add(new PressAnywhere());
     }
 
     @Override

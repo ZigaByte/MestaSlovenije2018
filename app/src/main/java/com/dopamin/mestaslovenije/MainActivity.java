@@ -73,8 +73,8 @@ public class MainActivity extends Activity {
         MobileAds.initialize(this, "ca-app-pub-9896834767828630~9178258660");
 
         interstitialAd = new InterstitialAd(this);
-        //interstitialAd.setAdUnitId("ca-app-pub-9896834767828630/1738752340");
-        interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        interstitialAd.setAdUnitId("ca-app-pub-9896834767828630/1738752340");
+        //interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712"); This is test ID
         interstitialAd.loadAd(new AdRequest.Builder().build());
         interstitialAd.setAdListener(new AdListener() {
             @Override
